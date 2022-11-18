@@ -2,10 +2,10 @@
 
 Welcome to our course Applied Statistics! 👋  
 
-This page will contain a weekly overview about the topics, slides and materials for the semester.
+This page will contain a weekly overview about the topics, slides and materials for the course.
 
 :::{Note}
-This overview will be updated as the semester progresses.
+This overview will be updated as the course progresses.
 :::
 
 
