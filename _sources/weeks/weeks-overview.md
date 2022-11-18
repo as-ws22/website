@@ -6,8 +6,7 @@ This section contains the weekly course materials and is structured as follows:
 
 ## Prepare
 
-Content you should prepare before attending the lecture. 
-
+Content you should prepare: 
 
 📚 Readings
 
@@ -21,17 +20,29 @@ Content you should prepare before attending the lecture.
 
 Lecture materials: 
 
+📑 Slides
 
-📑 Download slides
-
-⏯ Participate in web-tutorials
+⏯ Web-tutorials
 
 ---
 
 ## Practice
 
-Application exercises (AE) and questions (Q) to practice concepts and code:
+Application exercises (AE) to practice concepts and code:
 
 💻 Application exercises
 
-☑️ Questions (usually multiple choice)
+---
+
+## Perform
+
+Homeworks (HW), exams and project:
+
+
+🖥 Homework
+
+💯 Exam 
+
+📘 Project
+
+---

@@ -3,9 +3,9 @@
 This section contains an overview about the programming environments you will need for our course. 
 
 
-## Create environment: mr
+## Create environment: stats
 
-We install some modules in a new Anaconda environment. We call this new environment `mr` (for market research). 
+We install some modules in a new Anaconda environment. We call this new environment `stats`. 
 
 
 > On *Windows* open the Start menu and open the "Anaconda Command Prompt". 
@@ -16,13 +16,13 @@ We install some modules in a new Anaconda environment. We call this new environm
 - Copy this code and run it in your terminal: 
 
 ```bash
-conda create -n mr python=3.9 pandas openpyxl jupyter scikit-learn altair vega_datasets matplotlib seaborn --y
+conda create -n stats python=3.9 pandas openpyxl jupyter scikit-learn altair vega_datasets matplotlib seaborn --y
 ```
 
 Activate the new environment:
 
 ```bash
-conda activate mr
+conda activate stats
 ```
 
 
