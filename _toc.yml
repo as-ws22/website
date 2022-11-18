@@ -9,16 +9,16 @@ parts:
  #  - file: docs/course-faq.md
   - caption: Programming
     chapters:
-    - file: code/code-overview.md
+ #   - file: code/code-overview.md
     - file: docs/programming-toolkit.md
     - file: docs/programming-environment.md 
 #    - file: docs/programming-fundamentals.ipynb    
 #      sections:
 #      - file: docs/programming-syntax.ipynb
 #      - file: docs/programming-semantics.ipynb
-#  - caption: Weekly materials
-#    chapters:
-#    - file: weeks/weeks-overview.md
+  - caption: Weekly materials
+    chapters:
+    - file: weeks/weeks-overview.md
 #      sections:
 #      - file: weeks/week1.md
 #      - file: weeks/week2.md
