@@ -1,4 +1,4 @@
-title: Market Research
+title: Applied Statistics
 author: Jan Kirenz
 logo: logo.png
 
@@ -13,7 +13,7 @@ bibtex_bibfiles:
    - _bibliography/references.bib
 
 repository:
-  url: https://github.com/mr-ws22/website
+  url: https://github.com/as-ws22/website
   branch: main
 
 html:
