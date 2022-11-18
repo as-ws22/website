@@ -17,12 +17,15 @@
 :align: center
 ```
 
+---
 
 ## Course topics
 
 Gain experience in data collection, data wrangling, exploratory data analysis, predictive modeling, and statistical inference while working on problems and case studies inspired by and based on real-world questions. 
 
 The course will focus on the Python programming language.
+
+---
 
 ## Learning objectives
 
@@ -33,6 +36,7 @@ By the end of the semester, you will be able to...
 -   perform simulation-based inference using randomization and bootstrapping.
 -   use traditional statistical methods to test hypothesis.
 
+---
 
 ## Where to get help
 
@@ -42,12 +46,15 @@ By the end of the semester, you will be able to...
 
 Check out the [Support](course-support.md) page for more resources.
 
+---
+
 ## Textbook
 
 Textbook for the course:
 
 - [Introduction to Modern Statistics](https://openintro-ims.netlify.app/) by Mine Çetinkaya-Rundel and Johanna Hardin
 
+---
 
 ## Lectures
 
@@ -56,14 +63,18 @@ Therefore, as much as possible, you will be working on a variety of tasks and ac
 
 You are expected to bring a laptop to each class so that you can take part in the in-class exercises.
 
+---
 
 ## Assessment
 
-Assessment for the course is comprised of two components: 
+Assessment for the course is comprised of four components: 
 
-- Optional [application exercises](application-exercises) to obtain 10 bonus points for the exam
-- Exam (90 minutes at the end of the semester. 60% market research and 40% statistics)
+- [application exercises](application-exercises)
+- [homework assignments](hw) 
+- [exams](exams)
+- [project](project)
 
+---
 
 (application-exercises)=
 ### Application exercises
@@ -80,16 +91,58 @@ The AEs are due within **three days** after the corresponding lecture. For examp
 
 Because these AEs are for practice, they will be graded based on completion. Successful on-time completion of at least 80% of every AE will result in full credit (+10 bouns points in exam). 
 
+---
+
+(hw)=
+### Homework
+
+In homeworks (HW), you will apply what you've learned during lectures to complete data analysis and visualization‚ tasks using data not covered during lectures.
+
+You may discuss homework assignments with other students; however, homework should be completed and **submitted individually**.
+
+Homework must be completed in the provided Jupyter Notebooks in your course GitHub-repo and also submitted in Moodle.
+
+---
+
 (exams)=
-### Exam
+### Exams
 
-There will be one exam at the end of the semester. Through the exam you have the opportunity to demonstrate what you've learned in the course.
+There will be two, "take-home", open-note exams in Moodle.
+Through these exams you have the opportunity to demonstrate what you've learned in the course thus far.
 
-The exam will focus on the conceptual understanding of the content but will also cover programming topics.  
 
-More detail about the exams will be given during the semester.
+:::{Note}
+The exams will focus on the conceptual understanding of the content
+:::
+
+More details about the exams will be given during the semester.
+
+
+---
+
+
+(project)=
+### Project
+
+The purpose of the [project](project-description.md) is to apply what you've learned throughout the semester to analyze an interesting, data-driven research question. The project will be completed in **teams**.
+
+More information about the project will be provided during the semester.
+
+---
 
 ## Grading
+
+
+The final course grade will be calculated as follows:
+
+| Category              | Percentage      |
+|-----------------------|-----------------|
+| Application exercises | 10%             |
+| Homework              | 20%             |
+| Project               | 30%             |
+| Exam 01               | 20%             |
+| Exam 02               | 20%             |
+
 
 The final grade will be determined based on the following thresholds:
 
@@ -107,6 +160,8 @@ The final grade will be determined based on the following thresholds:
 | 4.0            | 50 - 54          |
 | 4.7           | 15 - 49           |
 | 5.0            | 0 - 14           |
+
+---
 
 
 ## Tips for success

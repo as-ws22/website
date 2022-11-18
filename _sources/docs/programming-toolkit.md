@@ -6,6 +6,7 @@ You will need to install:
 
 1. the latest version of Anaconda (includes Python and some toolkits) 
 2. Visual Studio Code (a code editor)
+3. Git and create an acount at GitHub (for software development and version control)
 
 Please read the following instructions.
 
@@ -171,3 +172,84 @@ Open a Juptyer Notebook in VS Code:
 If you can't select a kernel (like the so called `base` kernel), try to close and restart VS Code once again.
 
 ---
+
+(github)=
+## Git and GitHub
+
+Git is a version control system -- like the “Track Changes” features from Microsoft Word with many more additional features.
+
+GitHub is a provider of internet hosting for software development and version control using Git. 
+
+
+
+### Install Git
+
+
+> On *Windows* open the Start menu and open the "Anaconda Command Prompt". 
+
+
+> On *macOS*: Open your terminal.
+
+
+````{admonition} To do
+:class: tip
+
+Type this in your terminal:
+
+```bash
+git --version
+```
+
+````
+
+If you don't see the version, you need to install Git. *If you have **macOS**, the terminal may ask you if you want to install Git. Use this option to install Git right away*.  
+
+
+```{admonition} To do
+:class: tip
+
+
+- 💾 Mac: 
+  - Option 1: Install Git from your terminal after you have typed `git --version` in your terminal
+  - Option 2: Install Apple's [XCode](https://apps.apple.com/us/app/xcode/id497799835?mt=12), which includes Git. 
+  - Option 3: Install [Git with the help of homebrew](https://git-scm.com/download/mac).
+
+
+- 💾 Windows: [Download Git](https://git-scm.com/download/win). You can follow [these instructions](https://www.heise.de/tipps-tricks/Git-auf-Windows-installieren-und-einrichten-5046134.html) to learn which options to choose during the installation process. When you are asked which editor you want to use, choose Visual Studio Code)
+
+
+```
+
+
+### GitHub account
+
+You also need a free GitHub-account for our course. Please follow the instructions below (*in case you already have a GitHub account: please add your HdM-email address to your account*):
+
+```{admonition} To do
+:class: tip
+
+- [Create a free GitHub account with your HdM-email](https://github.com/join)
+- Verify your GitHub email
+- 💾 Install [GitHub Desktop](https://desktop.github.com/) to synchronize your machine with GitHub
+```
+
+
+### VS Code GitHub extensions
+
+Before you install the next extension, make sure you have the following prerequisites:
+
+- An active GitHub account
+- Git installed on your computer
+
+```{admonition} To do
+:class: tip
+
+- 💾 Install the [VS Code GitHub extension](https://code.visualstudio.com/docs/editor/github)
+
+- 💾 Install the [VS Code GitHub Classroom extension](https://marketplace.visualstudio.com/items?itemName=GitHub.classroom&ssr=false#overview)
+
+```
+
+
+---
+
