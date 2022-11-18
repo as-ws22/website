@@ -17,10 +17,11 @@ Please read the following instructions.
 
 The open-source Anaconda Individual Edition is one of the easiest ways to get started with data science projects. It is a data science toolkit which already includes most of the data science modules we need.
 
+In case you already have an installation of Anaconda on your system, I recommend to uninstall Anaconda and install the latest version. If not, you can proceed with the [installation step](anaconda-installation)
 
 ### Uninstall your old version
 
-To avoid compatibility problems with older versions of Anaconda, I recommend to uninstall Anaconda and install the latest version.
+To avoid compatibility problems with older versions of Anaconda, I recommend to uninstall Anaconda and install the latest version .
 
 #### Windows
 
@@ -67,6 +68,7 @@ rm -rf ~/anaconda3
 
 ````
 
+(anaconda-installation)=
 ### Install Anaconda
 
 Install the latest version of the Anaconda Individual Edition:
