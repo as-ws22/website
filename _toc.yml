@@ -1,6 +1,6 @@
 format: jb-book
 root: docs/course-overview.md
-#parts:
+parts:
 #  - caption: Course information
 #    chapters:
 #    - file: docs/course-schedule.md
