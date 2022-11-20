@@ -143,8 +143,7 @@ The final course grade will be calculated as follows:
 | Application exercises | 10%             |
 | Homework              | 20%             |
 | Project               | 30%             |
-| Exam 01               | 20%             |
-| Exam 02               | 20%             |
+| Exams                 | 40%             |
 
 
 The final grade will be determined based on the following thresholds:
@@ -166,12 +165,3 @@ The final grade will be determined based on the following thresholds:
 
 ---
 
-
-## Tips for success
-
-Your success on this course depends very much on you and the effort you put into it:
-
-1.  Complete all the preparation work before class.
-1.  Do the readings.
-1.  Do the application exercises. The earlier you start, the better. 
-1.  Don't procrastinate. If something is confusing to you in Week 2, Week 3 will become more confusing, Week 4 even worse, and eventually you won't know where to begin asking questions. Don't let the week end with unanswered questions. 
