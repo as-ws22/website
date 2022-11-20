@@ -25,7 +25,7 @@ Observations (Nr. 10): [📚](https://openintro-ims.netlify.app/data-design.html
 ## Participate
 
 
-Download slides: 
+Download slides: [📑](https://drive.google.com/file/d/1-fg6YBAlXcm0O46ns9t1QfEtR8xtkxu8/view?usp=sharing)
 
 Data basics (Nr. 5): [☑️](https://forms.gle/EJT7mcYgPi8drKgR9)
 
