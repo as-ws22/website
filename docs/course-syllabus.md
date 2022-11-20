@@ -56,9 +56,13 @@ Check out the [Support](course-support.md) page for more resources.
 
 ## Textbook
 
-Textbook for the course:
+Textbooks for the course:
 
 - [Introduction to Modern Statistics](https://openintro-ims.netlify.app/) by Mine Çetinkaya-Rundel and Johanna Hardin
+
+- [An Introduction to Statistical Learning](https://www.statlearning.com/) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani
+
+- Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (3rd Edition) by Aurélien Géron.
 
 ---
 
@@ -89,13 +93,6 @@ Parts of some lectures will be dedicated to working on "Application Exercises" (
 
 AEs should be completed and **submitted individually**.
 
-:::{Note}
-AEs are usually due within three days after lecture
-:::
-
-The AEs are due within **three days** after the corresponding lecture. For example, AEs from a Tuesday lecture would be due Friday by 11:59 pm ET.
-
-Because these AEs are for practice, they will be graded based on completion. Successful on-time completion of at least 80% of every AE will result in full credit (+10 bouns points in exam). 
 
 ---
 
@@ -113,7 +110,7 @@ Homework must be completed in the provided Jupyter Notebooks in your course GitH
 (exams)=
 ### Exams
 
-There will be two, "take-home", open-note exams in Moodle.
+There will be multiple open-note exams in Moodle.
 Through these exams you have the opportunity to demonstrate what you've learned in the course thus far.
 
 
