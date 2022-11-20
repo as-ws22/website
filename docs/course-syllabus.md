@@ -13,7 +13,6 @@
 
 
 
-
 ```{image} ../_static/img/room.png
 :alt: course location
 :class: bg-primary mb-1
@@ -36,7 +35,8 @@ The course will focus on the Python programming language.
 By the end of the semester, you will be able to...
 
 -   obtain, explore, visualize, and analyze data in Python to investigate patterns.
--   fit and evaluate linear and logistic regression models to make predictions.
+-   fit and evaluate regression and classification models to make predictions.
+-   use resampling methods to obtain reliable predictions.
 -   perform simulation-based inference using randomization and bootstrapping.
 -   use traditional statistical methods to test hypothesis.
 -   apply Bayes' theorem, the foundation of Bayesian statistics.  
@@ -58,9 +58,9 @@ Check out the [Support](course-support.md) page for more resources.
 
 Textbooks for the course:
 
-- [Introduction to Modern Statistics](https://openintro-ims.netlify.app/) by Mine Çetinkaya-Rundel and Johanna Hardin
+- [Introduction to Modern Statistics](https://openintro-ims.netlify.app/) by Mine Çetinkaya-Rundel and Johanna Hardin.
 
-- [An Introduction to Statistical Learning](https://www.statlearning.com/) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani
+- [An Introduction to Statistical Learning](https://www.statlearning.com/) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.
 
 - Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (3rd Edition) by Aurélien Géron.
 
