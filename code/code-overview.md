@@ -55,16 +55,33 @@ Only application exercises
 
 ## Week 5
 
+- [51. Regression diagnostics](../code/51-diagnostics-c.ipynb)
+- [53. Model selection: Implicit (Lasso)](../code/53-implicit.ipynb)
+- [54. Lasso regression](../code/54-lasso-c.ipynb)
+- [55. Model selection: Filter](../code/55-filter.ipynb)
+- [56. Model selection: Wrapper](../code/56-wrapper.ipynb)
+
 ---
 
 ## Week 6
+
+- [60. Probability of an event](../code/60-logistic.ipynb)
+- [61. Multiple predictors classification](../code/61-logistic.ipynb)
+- [62. Logistic regression in Python](../code/62-logistic-online.ipynb)
 
 ---
 
 ## Week 7
 
+- [64. Randomization experiments](../code/64-discrimination.ipynb)
+- [67. Hypothesis tesing opportunity cost ](../code/67-opportunity.ipynb)
+- [69. Bootsrapping medical case](../code/69-medical-case.ipynb)
+- [72. Mathematical introduction](../code/72-mathematical.ipynb)
+
 ---
 
 ## Week 8
+
+None
 
 ---
