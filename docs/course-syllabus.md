@@ -25,7 +25,7 @@
 
 ## Course topics
 
-Gain experience in data collection, data wrangling, exploratory data analysis, predictive modeling, and statistical inference while working on problems and case studies inspired by and based on real-world questions. 
+Gain experience in data collection, exploratory data analysis, predictive modeling, statistical inference and Bayesian statistics while working on problems and case studies inspired by and based on real-world questions. 
 
 The course will focus on the Python programming language.
 
