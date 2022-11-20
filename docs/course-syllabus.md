@@ -20,6 +20,9 @@
 :align: center
 ```
 
+
+- [Applied Statistics Moodle-Course](https://e-learning.hdm-stuttgart.de/moodle/course/view.php?id=9646)
+
 ---
 
 ## Course topics
