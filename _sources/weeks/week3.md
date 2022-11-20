@@ -6,56 +6,41 @@
 (prepare)=
 ## Prepare
 
-
-Introduction to Altair (Nr. 11): [📚](https://uwdata.github.io/visualization-curriculum/altair_introduction.html)
-
-
-Loans data (Nr. 12): [📚](https://openintro-ims.netlify.app/explore-categorical.html#explore-categorical)
+Fitting a line and residuals (Nr. 32): [📚](https://openintro-ims.netlify.app/model-slr.html#fit-line-res-cor)
 
 
-Simple bar chart (Nr. 13): [📚](https://openintro-ims.netlify.app/explore-categorical.html#contingency-tables-and-bar-plots)
+Correlation (Nr. 33): [📚](https://openintro-ims.netlify.app/model-slr.html#describing-linear-relationships-with-correlation)
 
 
-Dodged bar plot (Nr. 14): [📚](https://openintro-ims.netlify.app/explore-categorical.html#bar-plots-with-two-variables)
+Least squares regression (Nr. 34): [📚](https://openintro-ims.netlify.app/model-slr.html#least-squares-regression)
 
 
-Stacked bar plot (Nr. 15): [📚](https://openintro-ims.netlify.app/explore-categorical.html#bar-plots-with-two-variables)
+R squared (Nr. 35): [📚](https://openintro-ims.netlify.app/model-slr.html#r-squared)
 
 
-Standardized bar plot (Nr. 16): [📚](https://openintro-ims.netlify.app/explore-categorical.html#bar-plots-with-two-variables)
+Categorical predictors with two levels (Nr. 36): [📚](https://openintro-ims.netlify.app/model-slr.html#categorical-predictor-two-levels)
 
 
-Pie chart (Nr. 17): [📚](https://openintro-ims.netlify.app/explore-categorical.html#pie-charts)
-
-
-Contingency tables (Nr. 18): [📚](https://openintro-ims.netlify.app/explore-categorical.html#contingency-tables-and-bar-plots)
-
-
-Contingency tables with proportions (Nr. 19): [📚](https://openintro-ims.netlify.app/explore-categorical.html#row-and-column-proportions)
-
+Outliers (Nr. 37): [📚](https://openintro-ims.netlify.app/model-slr.html#outliers-in-regression)
 
 ---
-
----
-
 
 (participate)=
 ## Participate
 
-Download slides: [📑](https://drive.google.com/file/d/1-ZClN3oVlIwMtL8n1Z4dWyTIqH7kMdO4/view?usp=sharing)
 
+Download slides: [📑](https://drive.google.com/file/d/1-mcDrtEF7SrPUmSSx-DejQBiuekUaRX9/view?usp=sharing)
 
-Create the Anaconda environment `mr`: [💾](../docs/programming-environment.md)
+Code overview: [🖥](../code/code-overview.md)
+
 
 ---
-
----
-
 
 (practice)=
 ## Practice
 
-Code overview: [🖥](../code/code-overview.md)
+
+
 
 
 

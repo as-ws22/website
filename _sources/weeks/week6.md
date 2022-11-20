@@ -1,41 +1,37 @@
 # Week 6
 
 
-
 ---
 
 (prepare)=
 ## Prepare
 
-Correlation (Nr. 35): [📚](https://openintro-ims.netlify.app/model-slr.html#describing-linear-relationships-with-correlation)
 
-Least squares regression (Nr. 36): [📚](https://openintro-ims.netlify.app/model-slr.html#least-squares-regression)
+Precision recall and F1 score (Nr. 58): [📚](https://mlu-explain.github.io/precision-recall/)
 
-R squared (Nr. 37): [📚](https://openintro-ims.netlify.app/model-slr.html#r-squared)
+ROC curve and AUC (Nr. 59): [📚](https://mlu-explain.github.io/roc-auc/)
 
-Categorical predictors with two levels (Nr. 38): [📚](https://openintro-ims.netlify.app/model-slr.html#categorical-predictor-two-levels)
+Probability of an event (Nr. 60): [📚](https://openintro-ims.netlify.app/model-logistic.html#modelingTheProbabilityOfAnEvent)
+
+Multiple predictors classification (Nr. 61): [📚](https://openintro-ims.netlify.app/model-logistic.html#logistic-model-with-many-variables)
 
 
 ---
-
----
-
 
 (participate)=
 ## Participate
 
 
-Slides: [📑](https://drive.google.com/file/d/10DuEFUE-BVH1NYf84KyXeYA1Ajdre-0I/view?usp=sharing)
+Download slides: [📑](https://drive.google.com/file/d/1-xqu9GGXofuFrf2bWMbk0jSfwSr51xcB/view?usp=sharing)
 
+Code overview: [🖥](../code/code-overview.md)
 
 
 ---
-
----
-
 
 (practice)=
 ## Practice
+
 
 
 

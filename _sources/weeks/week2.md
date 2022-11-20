@@ -6,23 +6,49 @@
 (prepare)=
 ## Prepare
 
-Population and sample (Nr. 7): [📚](https://openintro-ims.netlify.app/data-design.html#data-design)
+Introduction to Altair (Nr. 11): [📚](https://uwdata.github.io/visualization-curriculum/altair_introduction.html)
 
-Sampling methods (Nr. 8): [📚](https://openintro-ims.netlify.app/data-design.html#sampling-principles-strategies)
+Loans data (Nr. 12): [📚](https://openintro-ims.netlify.app/explore-categorical.html#explore-categorical)
 
-Experiments (Nr. 9): [📚](https://openintro-ims.netlify.app/data-design.html#experiments)
+Simple bar chart (Nr. 13): [📚](https://openintro-ims.netlify.app/explore-categorical.html#contingency-tables-and-bar-plots)
 
-Observations (Nr. 10): [📚](https://openintro-ims.netlify.app/data-design.html#observational-studies)
+Stacked bar plot (Nr. 14): [📚](https://openintro-ims.netlify.app/explore-categorical.html#bar-plots-with-two-variables)
+
+Standardized bar plot (Nr. 15): [📚](https://openintro-ims.netlify.app/explore-categorical.html#bar-plots-with-two-variables)
+
+Pie chart (Nr. 16): [📚](https://openintro-ims.netlify.app/explore-categorical.html#pie-charts)
+
+Contingency tables (Nr. 17): [📚](https://openintro-ims.netlify.app/explore-categorical.html#contingency-tables-and-bar-plots)
+
+Contingency tables with proportions (Nr. 18): [📚](https://openintro-ims.netlify.app/explore-categorical.html#row-and-column-proportions)
+
+Scatterplot (Nr. 19): [📚](https://openintro-ims.netlify.app/explore-numerical.html#scatterplots)
+
+Dot plot, mean, median and mode (Nr. 20): [📚](https://openintro-ims.netlify.app/explore-numerical.html#dotplots)
+
+Histogram  (Nr. 21): [📚](https://openintro-ims.netlify.app/explore-numerical.html#histograms)
+
+Variance and standard deviation (Nr. 22): [📚](https://openintro-ims.netlify.app/explore-numerical.html#histograms)
+
+Box Plot (Nr. 23): [📚](https://openintro-ims.netlify.app/explore-numerical.html#boxplots)
+
+Robust statistics and transformations (Nr. 24): [📚](https://openintro-ims.netlify.app/explore-numerical.html#robust-statistics)
+
+Comparing numerical data across groups (Nr. 25): [📚](https://openintro-ims.netlify.app/explore-categorical.html#comparing-numerical-data-across-groups)
+
+Mapping data (Nr. 26): [📚](https://openintro-ims.netlify.app/explore-numerical.html#mapping-data)
+
+
 
 ---
 
 (participate)=
 ## Participate
 
-Download slides: [📑](https://drive.google.com/file/d/1-3uVavxMAvDNMnRiN7sXsZRTReRNsZpj/view?usp=sharing)
 
+Download slides: [📑](https://drive.google.com/file/d/1-hVUAW4V6y0Jlw-_4Zmk0nJmF9iT1s5f/view?usp=sharing)
 
-Go to this GitHub-Repo: [umfrage](https://github.com/kirenz/umfrage)
+Code overview: [🖥](../code/code-overview.md)
 
 
 ---
@@ -30,13 +56,9 @@ Go to this GitHub-Repo: [umfrage](https://github.com/kirenz/umfrage)
 (practice)=
 ## Practice
 
-Population and sample (Nr. 7): [☑️](https://forms.gle/qPYg55ncRyUGCqXH8)
 
-Sampling methods (Nr. 8): [☑️](https://forms.gle/SnQsTPKF5CRQ1Wa49)
 
-Experiments (Nr. 9): [☑️](https://forms.gle/6Tu92Ez83XANW8Un6)
 
-Observations (Nr. 10): [☑️](https://forms.gle/V36KmsTjeH2finms9)
 
 
 ---
