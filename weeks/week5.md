@@ -6,6 +6,10 @@
 (prepare)=
 ## Prepare
 
+Adjusted R squared (Nr. 50): [📚](https://openintro-ims.netlify.app/model-mlr.html#adjusted-r-squared)
+
+Model selection methods (Nr. 52): [📚](https://openintro-ims.netlify.app/model-mlr.html#model-selection)
+
 
 ---
 
