@@ -6,8 +6,12 @@
 
 |                   | Day       | Time                  | Location    |
 |-----------        |-----------|-------------------    |-------------|
-| Market research   | Tuesday   | 14:15 am - 15:45 pm   |  Room 016b  |
-| Statistics        | Tuesday   | 16:00 pm - 17:30 pm   |  Room 016b  |
+| Seminar          | 25.11.22   | 09:00  - 17:00    |  Room S303  |
+| Seminar          | 26.11.22   | 09:00  - 17:00    |  Room S303  |
+| Online          | 27.11.22-18.01.23   | 09:00  - 17:00    |  Room S303  |
+| Seminar          | 19.01.23   | 09:00  - 17:00    |  Room S303  |
+
+
 
 
 ```{image} ../_static/img/room.png
@@ -35,13 +39,15 @@ By the end of the semester, you will be able to...
 -   fit and evaluate linear and logistic regression models to make predictions.
 -   perform simulation-based inference using randomization and bootstrapping.
 -   use traditional statistical methods to test hypothesis.
+-   apply Bayes' theorem, the foundation of Bayesian statistics.  
+
 
 ---
 
 ## Where to get help
 
 - If you have a question during lecture, feel free to ask it! 
-- Outside of class, any general questions about course content or assignments should be posted on the Moodle course forum.
+- Outside of class, any general questions about course content or assignments should be posted on the [Moodle course forum](https://e-learning.hdm-stuttgart.de/moodle/mod/forum/view.php?id=266446).
 - Emails should be reserved for questions not appropriate for the public forum. **If you email me, please include the name of our course in the subject line.** 
 
 Check out the [Support](course-support.md) page for more resources.
