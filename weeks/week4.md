@@ -18,7 +18,9 @@
 ## Participate
 
 
-Download slides: 
+Download slides: [📑](https://drive.google.com/file/d/1-rzYhSLOyhDUNMGj-KHE78rcHt4yseUN/view?usp=sharing)
+
+Code overview: [🖥](../code/code-overview.md)
 
 
 
