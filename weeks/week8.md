@@ -6,6 +6,7 @@
 (prepare)=
 ## Prepare
 
+Probability & Bayes' theorem (Nr. 91): [📺 ](https://www.youtube.com/watch?v=HZGCoVF3YvM)
 
 ---
 
