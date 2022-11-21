@@ -6,6 +6,7 @@
 (prepare)=
 ## Prepare
 
+Main model challenges (Nr. 41): [📚](See Hands on Machine Learning)
 
 [📚 Linear Regression - A Visual Introduction To (Almost) Everything You Should Know](https://mlu-explain.github.io/linear-regression/) by Jared Wilber.
 
