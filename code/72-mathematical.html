@@ -1,0 +1,1463 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Regression splines &#8212; Applied Statistics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Applied Statistics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../docs/course-overview.html">
+                    Course overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/course-syllabus.html">
+   Course syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/course-support.html">
+   Course support
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/programming-toolkit.html">
+   Programming toolkit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/programming-environment.html">
+   Anaconda environment
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Weekly materials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../weeks/weeks-overview.html">
+   Overview
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/as-ws22/website/blob/main/code/72-mathematical.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/as-ws22/website"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/as-ws22/website/issues/new?title=Issue%20on%20page%20%2Fcode/72-mathematical.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/code/72-mathematical.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import">
+     Import
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-label-and-feature">
+     Create label and feature
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-split">
+     Data split
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-exploration">
+     Data exploration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ridge-regression">
+   Ridge regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polynomial-regression">
+   Polynomial regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#splines-scikit-learn">
+   Splines (scikit-learn)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spline-transformer">
+     Spline transformer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#periodic-splines">
+     Periodic splines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#splines-statsmodels">
+   Splines (statsmodels)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#natural-spline">
+     Natural spline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-summary">
+   Models summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Regression splines</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import">
+     Import
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-label-and-feature">
+     Create label and feature
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-split">
+     Data split
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-exploration">
+     Data exploration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ridge-regression">
+   Ridge regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polynomial-regression">
+   Polynomial regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#splines-scikit-learn">
+   Splines (scikit-learn)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spline-transformer">
+     Spline transformer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#periodic-splines">
+     Periodic splines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#splines-statsmodels">
+   Splines (statsmodels)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#natural-spline">
+     Natural spline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-summary">
+   Models summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="regression-splines">
+<h1>Regression splines<a class="headerlink" href="#regression-splines" title="Permalink to this headline">#</a></h1>
+<p><em>The following code tutorial is mainly based on the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_polynomial_interpolation.html#sphx-glr-auto-examples-linear-model-plot-polynomial-interpolation-py">scikit learn documentation</a> about splines provided by Mathieu Blondel, Jake Vanderplas, Christian Lorentzen and Malte Londschien and code from <a class="reference external" href="https://nbviewer.org/github/JWarmenhoven/ISL-python/blob/master/Notebooks/Chapter%207.ipynb">Jordi Warmenhoven</a></em>. To learn more about the spline regression method, review <a class="reference external" href="https://www.statlearning.com/">“An Introduction to Statistical Learning”</a> from <span id="id1">[]</span>.</p>
+<ul class="simple">
+<li><p>Regression splines involve dividing the range of a feature X into K distinct regions (by using so called knots). Within each region, a polynomial function (also called a Basis Spline or B-splines) is fit to the data.</p></li>
+<li><p>In the following example, various piecewise polynomials are fit to the data, with one knot at age=50 <span id="id2">[]</span>:</p></li>
+</ul>
+<p><img alt="" src="_static/img/splines.png" /></p>
+<p>Figures:</p>
+<ul class="simple">
+<li><p>Top Left: The cubic polynomials are unconstrained.</p></li>
+<li><p>Top Right: The cubic polynomials are constrained to be continuous at age=50.</p></li>
+<li><p>Bottom Left: The cubic polynomials are constrained to be continuous, and to
+have continuous first and second derivatives.</p></li>
+<li><p>Bottom Right: A linear spline is shown, which is constrained to be continuous.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The polynomials are ususally constrained so that they join smoothly at the region boundaries, or knots.</p></li>
+<li><p>Provided that the interval is divided into enough regions, this can produce an extremely flexibel fit <span id="id3">[]</span>:</p></li>
+</ul>
+<p><img alt="" src="_static/img/splines-2.png" /></p>
+<p>Figure: A cubic spline and a natural cubic spline, with three knots. The dashed lines denote the knot locations.</p>
+<ul class="simple">
+<li><p>To understand the advantages of regression splines, we first start with a linear ridge regression model, build a simple polynomial regression and then proceed to splines.</p></li>
+</ul>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write function to obtain RMSE for training and test data:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># create function to obtain model rmse</span>
+<span class="k">def</span> <span class="nf">model_results</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+
+    <span class="c1"># Training data</span>
+    <span class="n">pred_train</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">rmse_train</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">pred_train</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="c1"># Test data</span>
+    <span class="n">pred_test</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">rmse_test</span> <span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_test</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="c1"># Save model results</span>
+    <span class="n">new_results</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span> <span class="s2">&quot;rmse_train&quot;</span><span class="p">:</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="s2">&quot;rmse_test&quot;</span><span class="p">:</span> <span class="n">rmse_test</span><span class="p">}</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_results</span><span class="p">)</span>  
+      
+    <span class="k">return</span> <span class="n">results</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
+<section id="import">
+<h3>Import<a class="headerlink" href="#import" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/kirenz/datasets/master/wage.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>year</th>
+      <th>age</th>
+      <th>maritl</th>
+      <th>race</th>
+      <th>education</th>
+      <th>region</th>
+      <th>jobclass</th>
+      <th>health</th>
+      <th>health_ins</th>
+      <th>logwage</th>
+      <th>wage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>231655</td>
+      <td>2006</td>
+      <td>18</td>
+      <td>1. Never Married</td>
+      <td>1. White</td>
+      <td>1. &lt; HS Grad</td>
+      <td>2. Middle Atlantic</td>
+      <td>1. Industrial</td>
+      <td>1. &lt;=Good</td>
+      <td>2. No</td>
+      <td>4.318063</td>
+      <td>75.043154</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>86582</td>
+      <td>2004</td>
+      <td>24</td>
+      <td>1. Never Married</td>
+      <td>1. White</td>
+      <td>4. College Grad</td>
+      <td>2. Middle Atlantic</td>
+      <td>2. Information</td>
+      <td>2. &gt;=Very Good</td>
+      <td>2. No</td>
+      <td>4.255273</td>
+      <td>70.476020</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>161300</td>
+      <td>2003</td>
+      <td>45</td>
+      <td>2. Married</td>
+      <td>1. White</td>
+      <td>3. Some College</td>
+      <td>2. Middle Atlantic</td>
+      <td>1. Industrial</td>
+      <td>1. &lt;=Good</td>
+      <td>1. Yes</td>
+      <td>4.875061</td>
+      <td>130.982177</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="create-label-and-feature">
+<h3>Create label and feature<a class="headerlink" href="#create-label-and-feature" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>We only use the feature age to predict wage (because we only use one predictor, we don’t perform data standardization)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;wage&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-split">
+<h3>Data split<a class="headerlink" href="#data-split" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Dividing data into train and test datasets</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-exploration">
+<h3>Data exploration<a class="headerlink" href="#data-exploration" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Visualize the relationship between age and wage:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="c1"># seaborn settings</span>
+<span class="n">custom_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;axes.spines.right&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;axes.spines.top&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="n">rc</span><span class="o">=</span><span class="n">custom_params</span><span class="p">)</span>
+
+<span class="c1"># plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/72-mathematical_22_0.png" src="../_images/72-mathematical_22_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ridge-regression">
+<h2>Ridge regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>First, we obtain the optimal alpha parameter with cross validation</p></li>
+<li><p>We try different values for alpha:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alphas</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="n">alphas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([      0.000001,       0.00001 ,       0.0001  ,       0.001   ,
+             0.01    ,       0.1     ,       1.      ,      10.      ,
+           100.      ,    1000.      ,   10000.      ,  100000.      ,
+       1000000.      ])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Fit model</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">)</span>
+<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RidgeCV(alphas=array([      0.000001,       0.00001 ,       0.0001  ,       0.001   ,
+             0.01    ,       0.1     ,       1.      ,      10.      ,
+           100.      ,    1000.      ,   10000.      ,  100000.      ,
+       1000000.      ]))
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Show best alpha</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">alpha_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1000.0
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Show coefficients</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.71854335]]
+[80.69608773]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_results</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Ridge&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;model&#39;: &#39;Ridge&#39;, &#39;rmse_train&#39;: 40.7053, &#39;rmse_test&#39;: 41.4135}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> 
+            <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> 
+            <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+            <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/72-mathematical_33_0.png" src="../_images/72-mathematical_33_0.png" />
+</div>
+</div>
+</section>
+<section id="polynomial-regression">
+<h2>Polynomial regression<a class="headerlink" href="#polynomial-regression" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Next, we use a pipeline to add non-linear features to a ridge regression model.</p></li>
+<li><p>We use <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html"><code class="docutils literal notranslate"><span class="pre">make_pipeline</span></code></a> which is a shorthand for the Pipeline constructor</p>
+<ul>
+<li><p>It does not require, and does not permit, naming the estimators.</p></li>
+<li><p>Instead, their names will be set to the lowercase of their types automatically:</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+
+<span class="c1"># use polynomial features with degree 3</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+            <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> 
+            <span class="n">linear_model</span><span class="o">.</span><span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">)</span>
+            <span class="p">)</span>
+
+<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;polynomialfeatures&#39;, PolynomialFeatures(degree=3)),
+                (&#39;ridgecv&#39;,
+                 RidgeCV(alphas=array([      0.000001,       0.00001 ,       0.0001  ,       0.001   ,
+             0.01    ,       0.1     ,       1.      ,      10.      ,
+           100.      ,    1000.      ,   10000.      ,  100000.      ,
+       1000000.      ])))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_results</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Polynomial Reg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;model&#39;: &#39;Ridge&#39;, &#39;rmse_train&#39;: 40.7053, &#39;rmse_test&#39;: 41.4135},
+ {&#39;model&#39;: &#39;Polynomial Reg&#39;, &#39;rmse_train&#39;: 39.7717, &#39;rmse_test&#39;: 40.2513}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> 
+            <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> 
+            <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+            <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
+            <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/72-mathematical_37_0.png" src="../_images/72-mathematical_37_0.png" />
+</div>
+</div>
+</section>
+<section id="splines-scikit-learn">
+<h2>Splines (scikit-learn)<a class="headerlink" href="#splines-scikit-learn" title="Permalink to this headline">#</a></h2>
+<p><em>Note that spline transformers are a new feature in <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/release_highlights/plot_release_highlights_1_0_0.html">scikit learn 1.0</a>. Therefore, make sure to use the latest version of scikit learn. Use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span> <span class="pre">scikit-learn</span></code> to see which scikit-learn version is installed. If you use Anaconda, you can update all packages using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">update</span> <span class="pre">--all</span></code></em></p>
+<section id="spline-transformer">
+<h3>Spline transformer<a class="headerlink" href="#spline-transformer" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>The following function places the knots in a uniform (this is the default) or quantile fashion.</p></li>
+<li><p>We only have to specify the desired number of knots, and then have <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.SplineTransformer.html">SplineTransformer</a> automatically place the corresponding number of knots.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">SplineTransformer</span>
+
+<span class="c1"># use a spline wit 4 knots and 3 degrees </span>
+<span class="c1"># we combine the spline with a ridge regressions</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+                    <span class="n">SplineTransformer</span><span class="p">(</span><span class="n">n_knots</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> 
+                    <span class="n">linear_model</span><span class="o">.</span><span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">)</span>
+                    <span class="p">)</span>
+<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[(&#39;splinetransformer&#39;, SplineTransformer(n_knots=4)),
+                (&#39;ridgecv&#39;,
+                 RidgeCV(alphas=array([      0.000001,       0.00001 ,       0.0001  ,       0.001   ,
+             0.01    ,       0.1     ,       1.      ,      10.      ,
+           100.      ,    1000.      ,   10000.      ,  100000.      ,
+       1000000.      ])))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_results</span><span class="p">(</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;Cubic Spline&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;model&#39;: &#39;Ridge&#39;, &#39;rmse_train&#39;: 40.7053, &#39;rmse_test&#39;: 41.4135},
+ {&#39;model&#39;: &#39;Polynomial Reg&#39;, &#39;rmse_train&#39;: 39.7717, &#39;rmse_test&#39;: 40.2513},
+ {&#39;model&#39;: &#39;Cubic Spline&#39;, &#39;rmse_train&#39;: 39.7456, &#39;rmse_test&#39;: 40.2444}]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Obtain knots to show them in the following plot (there are degree number of additional knots each to the left and to the right of the fitted interval. These are there for technical reasons, so we refrain from showing them)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">splt</span> <span class="o">=</span> <span class="n">SplineTransformer</span><span class="p">(</span><span class="n">n_knots</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">splt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">knots</span> <span class="o">=</span> <span class="n">splt</span><span class="o">.</span><span class="n">bsplines_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">t</span>
+
+<span class="n">knots</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([18.        , 38.66666667, 59.33333333, 80.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Create observations</span>
+<span class="n">x_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">X_test</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1"># Make some predictions</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
+
+<span class="c1"># plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_new</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cubic spline with 4 knots and degree=3&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">knots</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jankirenz/opt/anaconda3/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but SplineTransformer was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/72-mathematical_43_1.png" src="../_images/72-mathematical_43_1.png" />
+</div>
+</div>
+</section>
+<section id="periodic-splines">
+<h3>Periodic splines<a class="headerlink" href="#periodic-splines" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>In some settings, e.g. in time series data with seasonal effects, we expect a periodic continuation of the underlying signal.</p></li>
+<li><p>Such effects can be modelled using periodic splines, which have equal function value and equal derivatives at the first and last knot.</p></li>
+<li><p>Review this notebook to learn more about periodic splines in scikit learn: <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_polynomial_interpolation.html#periodic-splines">periodic splines</a></p></li>
+</ul>
+</section>
+</section>
+<section id="splines-statsmodels">
+<h2>Splines (statsmodels)<a class="headerlink" href="#splines-statsmodels" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>In statsmodels, we can use pandas dataframes so let’s join our label and feature:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">df_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wage</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1045</th>
+      <td>127.115744</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>2717</th>
+      <td>118.884359</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>2835</th>
+      <td>104.921507</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>2913</th>
+      <td>87.981033</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>959</th>
+      <td>61.052421</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2763</th>
+      <td>73.775743</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>905</th>
+      <td>104.921507</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>1096</th>
+      <td>148.413159</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>235</th>
+      <td>81.283253</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>1061</th>
+      <td>109.833986</td>
+      <td>29</td>
+    </tr>
+  </tbody>
+</table>
+<p>2100 rows × 2 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Instead of providing the number of knots, in statsmodels, we have to specify the degrees of freedom (df).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df</span></code> defines how many parameters we have to estimate.</p></li>
+<li><p>They have a specific relationship with the number of knots and the degree, which depends on the type of spline (see <a class="reference external" href="https://stats.stackexchange.com/a/517479">Stackoverflow</a>):</p></li>
+<li><p>In the case of <strong>B-splines</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(df=𝑘+degree\)</span> if you specify the knots or</p></li>
+<li><p><span class="math notranslate nohighlight">\(𝑘=df−degree\)</span> if you specify the degrees of freedom and the degree.</p></li>
+</ul>
+</li>
+</ul>
+<p>As an example:</p>
+<ul class="simple">
+<li><p>A cubic spline (degree=3) with 4 knots (K=4) will have <span class="math notranslate nohighlight">\(df=4+3=7\)</span> degrees of freedom. If we use an intercept, we need to add an additional degree of freedom.</p></li>
+<li><p>A cubic spline (degree=3) with 5 degrees of freedom (df=5) will have <span class="math notranslate nohighlight">\(𝑘=5−3=2\)</span> knots (assuming the spline has no intercept).</p></li>
+<li><p>In our case, we want to fit a cubic spline (degree=3) with an intercept and three knots (K=3). This equals <span class="math notranslate nohighlight">\(df=3+3+1=7\)</span> for our feature. This means that these degrees of freedom are used up by an intercept, plus six basis functions.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.gam.api</span> <span class="kn">import</span> <span class="n">GLMGam</span><span class="p">,</span> <span class="n">BSplines</span>
+
+<span class="n">bs</span> <span class="o">=</span> <span class="n">BSplines</span><span class="p">(</span><span class="n">X_train</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">]],</span> <span class="n">df</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jankirenz/opt/anaconda3/lib/python3.9/site-packages/statsmodels/compat/pandas.py:61: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  from pandas import Int64Index as NumericIndex
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We fit a Generalized Additive Model (GAM). To learn more about GAMs, visit <span class="xref myst"></span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">GLMGam</span><span class="o">.</span><span class="n">from_formula</span><span class="p">(</span><span class="s1">&#39;wage ~ age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span> <span class="n">smoother</span><span class="o">=</span><span class="n">bs</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Take a look at the results</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:                   wage   No. Observations:                 2100
+Model:                         GLMGam   Df Residuals:                     2093
+Model Family:                Gaussian   Df Model:                            6
+Link Function:               identity   Scale:                          1582.9
+Method:                         PIRLS   Log-Likelihood:                -10712.
+Date:                Sat, 23 Apr 2022   Deviance:                   3.3129e+06
+Time:                        13:19:11   Pearson chi2:                 3.31e+06
+No. Iterations:                     3   Pseudo R-squ. (CS):            0.09038
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     38.3686     11.185      3.431      0.001      16.447      60.290
+age            1.1034      0.182      6.074      0.000       0.747       1.459
+age_s0        17.0585     13.393      1.274      0.203      -9.192      43.309
+age_s1        38.4351      6.901      5.569      0.000      24.909      51.961
+age_s2        34.9717      6.524      5.361      0.000      22.186      47.758
+age_s3        13.6359      7.383      1.847      0.065      -0.835      28.107
+age_s4        12.8306     14.500      0.885      0.376     -15.588      41.250
+age_s5       -53.3174     12.324     -4.326      0.000     -77.472     -29.163
+==============================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Obtain RMSE for training and test data:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;Spline statsmodels&quot;</span>
+
+<span class="c1"># Training data</span>
+<span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;pred_train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+<span class="n">rmse_train</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;pred_train&#39;</span><span class="p">],</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Test data</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;pred_test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_test</span><span class="p">,</span> <span class="n">exog_smooth</span><span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
+<span class="n">rmse_test</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;pred_test&#39;</span><span class="p">],</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Save model results</span>
+<span class="n">new_results</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span> <span class="s2">&quot;rmse_train&quot;</span><span class="p">:</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="s2">&quot;rmse_test&quot;</span><span class="p">:</span> <span class="n">rmse_test</span><span class="p">}</span>
+<span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_results</span><span class="p">)</span>  
+
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;model&#39;: &#39;Ridge&#39;, &#39;rmse_train&#39;: 40.7053, &#39;rmse_test&#39;: 41.4135},
+ {&#39;model&#39;: &#39;Polynomial Reg&#39;, &#39;rmse_train&#39;: 39.7717, &#39;rmse_test&#39;: 40.2513},
+ {&#39;model&#39;: &#39;Cubic Spline&#39;, &#39;rmse_train&#39;: 39.7456, &#39;rmse_test&#39;: 40.2444},
+ {&#39;model&#39;: &#39;Spline statsmodels&#39;, &#39;rmse_train&#39;: 39.7188, &#39;rmse_test&#39;: 40.2194}]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We plot the spline with the Statsmodel’s function <a class="reference external" href="https://www.statsmodels.org/devel/generated/statsmodels.gam.generalized_additive_model.GLMGamResults.plot_partial.html">.plot_partial</a>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">plot_partial</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cpr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_se</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/72-mathematical_58_0.png" src="../_images/72-mathematical_58_0.png" />
+<img alt="../_images/72-mathematical_58_1.png" src="../_images/72-mathematical_58_1.png" />
+</div>
+</div>
+<section id="natural-spline">
+<h3>Natural spline<a class="headerlink" href="#natural-spline" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Finally, we fit a natural spline with <a class="reference external" href="https://patsy.readthedocs.io/en/latest/">patsy</a> and statsmodels.</p></li>
+<li><p>In patsy one can specify the number of degrees of freedom directly (actual number of columns of the resulting design matrix)</p></li>
+<li><p>In the case of natural splines: <span class="math notranslate nohighlight">\(df=𝑘−1\)</span> if you specify the knots or <span class="math notranslate nohighlight">\(𝑘=df+1\)</span> if you specify the degrees of freedom.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">patsy</span> <span class="kn">import</span> <span class="n">dmatrix</span>
+
+<span class="n">bs</span> <span class="o">=</span> <span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;cr(train, df = 3)&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">X_train</span><span class="p">},</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We use statsmodel’s “Generalized linear models” (review this <a class="reference external" href="https://kirenz.github.io/regression/docs/gam.html">tutorial</a> to learn more about GAMs)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">GLM</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">bs</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;Natural Spline&#39;</span>
+
+<span class="c1"># Training data</span>
+<span class="n">pred_train</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;cr(train, df=3)&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">X_train</span><span class="p">},</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">))</span>
+<span class="n">rmse_train</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">pred_train</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Test data</span>
+<span class="n">pred_test</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;cr(test, df=3)&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">X_test</span><span class="p">},</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">))</span>
+<span class="n">rmse_test</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_test</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Save model results</span>
+<span class="n">new_results</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span> <span class="s2">&quot;rmse_train&quot;</span><span class="p">:</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="s2">&quot;rmse_test&quot;</span><span class="p">:</span> <span class="n">rmse_test</span><span class="p">}</span>
+<span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_results</span><span class="p">)</span>  
+
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;model&#39;: &#39;Ridge&#39;, &#39;rmse_train&#39;: 40.7053, &#39;rmse_test&#39;: 41.4135},
+ {&#39;model&#39;: &#39;Polynomial Reg&#39;, &#39;rmse_train&#39;: 39.7717, &#39;rmse_test&#39;: 40.2513},
+ {&#39;model&#39;: &#39;Cubic Spline&#39;, &#39;rmse_train&#39;: 39.7456, &#39;rmse_test&#39;: 40.2444},
+ {&#39;model&#39;: &#39;Spline statsmodels&#39;, &#39;rmse_train&#39;: 39.7188, &#39;rmse_test&#39;: 40.2194},
+ {&#39;model&#39;: &#39;Natural Spline&#39;, &#39;rmse_train&#39;: 39.8826, &#39;rmse_test&#39;: 40.3252}]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Plot model</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">X_test</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Make predictions</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;cr(xp, df=3)&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;xp&quot;</span><span class="p">:</span> <span class="n">xp</span><span class="p">},</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">))</span>
+
+<span class="c1"># plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Natural spline with df=3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/72-mathematical_65_0.png" src="../_images/72-mathematical_65_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="models-summary">
+<h2>Models summary<a class="headerlink" href="#models-summary" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Create a dataframe from model results</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> 
+
+<span class="n">df_results</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rmse_test&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>model</th>
+      <th>rmse_train</th>
+      <th>rmse_test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>Spline statsmodels</td>
+      <td>39.7188</td>
+      <td>40.2194</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cubic Spline</td>
+      <td>39.7456</td>
+      <td>40.2444</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Polynomial Reg</td>
+      <td>39.7717</td>
+      <td>40.2513</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Natural Spline</td>
+      <td>39.8826</td>
+      <td>40.3252</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Ridge</td>
+      <td>40.7053</td>
+      <td>41.4135</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./code"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jan Kirenz<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
