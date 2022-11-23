@@ -14,7 +14,7 @@ Probability & Bayes' theorem (Nr. 91): [📺 ](https://www.youtube.com/watch?v=H
 ## Participate
 
 
-Download slides: 
+Download slides: [📑](https://drive.google.com/file/d/10HNJ_5LvDrVLrVOXI9GhaXzf5JkEjonR/view?usp=sharing)
 
 
 
