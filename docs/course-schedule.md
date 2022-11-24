@@ -48,24 +48,24 @@ This overview will be updated as the semester progresses.
 |	Linear regression	|	3	|	37	|	CW 50	|	Outliers	|	[📚](https://openintro-ims.netlify.app/model-slr.html#outliers-in-regression)	|		|		|
 |	Models	|	4	|	38	|	CW 51	|	Statistical Learning & Machine Learning	|		|		|		|
 |	Models	|	4	|	39	|	CW 51	|	Types of Models	|		|		|		|
-|	Models	|	4	|	40	|	CW 51	|	Regression models (case happier)	|	[📚](See Hands on Machine Learning)	|		|		|
-|	Models	|	4	|	41	|	CW 51	|	Main model challenges	|	[📚](See Hands on Machine Learning)	|		|		|
+|	Models	|	4	|	40	|	CW 51	|	Regression models (case happier)	|		|		|		|
+|	Models	|	4	|	41	|	CW 51	|	Main model challenges	|	[📚](https://e-learning.hdm-stuttgart.de/moodle/pluginfile.php/430097/mod_resource/content/0/Hands%20on%20Machine%20Learning%2C%20Model%20Challenges.pdf)	|		|		|
 |	Models	|	4	|	42	|	CW 51	|	Data splitting	|	[📚](https://mlu-explain.github.io/train-test-validation/)	|		|		|
 |	Models	|	4	|	43	|	CW 51	|	Sales prediction 1 (without data splitting)	|		|		|		|
 |	Models	|	4	|	44	|	CW 51	|	Sales prediction 2 (with data splitting)	|		|		|		|
 |	Models	|	4	|	45	|	CW 51	|	Multiple predictors regression 1	|	[📚](https://openintro-ims.netlify.app/model-mlr.html#model-mlr)	|		|	[☑️](https://forms.gle/wHPHMvbTDczNaQD97)	|
 |	Models	|	4	|	46	|	CW 51	|	Multiple predictors regression 2	|		|		|		|
 |	Models	|	4	|	47	|	CW 51	|	Multiple predictors regression 3	|		|		|		|
-|	Models	|	4	|	48	|	CW 51	|	Regression splines	|	[📚](See Introduction to Statistical Learning)	|		|		|
-|	Models	|	4	|	49	|	CW 51	|	Generalized additive models (GAM)	|	[📚](See Introduction to Statistical Learning)	|		|		|
+|	Models	|	4	|	48	|	CW 51	|	Regression splines	|	[📚](https://www.statlearning.com/)	|		|		|
+|	Models	|	4	|	49	|	CW 51	|	Generalized additive models (GAM)	|	[📚](https://www.statlearning.com/)	|		|		|
 |	Model selection	|	5	|	50	|	CW 52	|	Adjusted R squared	|	[📚](https://openintro-ims.netlify.app/model-mlr.html#adjusted-r-squared)	|		|		|
 |	Model selection	|	5	|	51	|	CW 52	|	Regression diagnostics	|	[📚](https://mlu-explain.github.io/linear-regression/)	|		|		|
-|	Model selection	|	5	|	52	|	CW 52	|	Model selection methods	|	[📚](https://openintro-ims.netlify.app/model-mlr.html#model-selection)	|		|		|
-|	Model selection	|	5	|	53	|	CW 52	|	Model selection: Implicit (Lasso)	|		|		|		|
-|	Model selection	|	5	|	54	|	CW 52	|	Lasso regression	|		|		|		|
-|	Model selection	|	5	|	55	|	CW 52	|	Model selection: Filter	|		|		|		|
-|	Model selection	|	5	|	56	|	CW 52	|	Model selection: Wrapper	|		|		|		|
-|	Classification	|	6	|	57	|	CW 1	|	Classification	|		|		|		|
+|	Model selection	|	5	|	52	|	CW 52	|	Model selection methods	|	[📚](http://www.feat.engineering/selection.html)	|		|		|
+|	Model selection	|	5	|	53	|	CW 52	|	Model selection: Implicit (Lasso)	|	[📚](https://www.statlearning.com/)	|		|		|
+|	Model selection	|	5	|	54	|	CW 52	|	Lasso regression	|	[📚](https://www.statlearning.com/)	|		|		|
+|	Model selection	|	5	|	55	|	CW 52	|	Model selection: Filter	|	[📚](http://www.feat.engineering/selection.html)	|		|		|
+|	Model selection	|	5	|	56	|	CW 52	|	Model selection: Wrapper	|	[📚](http://www.feat.engineering/selection.html)	|		|		|
+|	Classification	|	6	|	57	|	CW 1	|	Classification	|	[📚](https://www.statlearning.com/)	|		|		|
 |	Classification	|	6	|	58	|	CW 1	|	Precision recall and F1 score	|	[📚](https://mlu-explain.github.io/precision-recall/)	|		|		|
 |	Classification	|	6	|	59	|	CW 1	|	ROC curve and AUC	|	[📚](https://mlu-explain.github.io/roc-auc/)	|		|		|
 |	Logistic regression	|	6	|	60	|	CW 1	|	Probability of an event	|	[📚](https://openintro-ims.netlify.app/model-logistic.html#modelingTheProbabilityOfAnEvent)	|		|		|
@@ -100,3 +100,5 @@ This overview will be updated as the semester progresses.
 |	Inferential modeling	|	8	|	89	|	CW 3	|	Inference regression bootsrapping	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#bootbeta1)	|		|		|
 |	Inferential modeling	|	8	|	90	|	CW 3	|	Inference regression mathematical	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#mathematical-model-interval-for-the-slope)	|		|		|
 |	Probability & Bayes	|	8	|	91	|	CW 3	|	Probability & Bayes' theorem	|	[📺](https://www.youtube.com/watch?v=HZGCoVF3YvM)	|		|		|
+|	Models	|	4	|	92	|	Bonus	|	Data science project housing	|	[📚](https://e-learning.hdm-stuttgart.de/moodle/pluginfile.php/430095/mod_resource/content/0/Hands%20on%20Machine%20Learning%2C%20project.pdf)	|		|		|
+|	Models	|	4	|	93	|	Bonus	|	Data science with Python	|	[📚](https://kirenz.github.io/ds-python/docs/intro.html)	|		|		|
