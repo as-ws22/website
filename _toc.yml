@@ -3,13 +3,13 @@ root: docs/course-overview.md
 parts:
   - caption: Course information
     chapters:
-#    - file: docs/course-schedule.md
+    - file: docs/course-schedule.md
     - file: docs/course-syllabus.md
     - file: docs/course-support.md
  #  - file: docs/course-faq.md
   - caption: Programming
     chapters:
- #   - file: code/code-overview.md
+    - file: code/code-overview.md
     - file: docs/programming-toolkit.md
     - file: docs/programming-environment.md 
 #    - file: docs/programming-fundamentals.ipynb    
@@ -23,9 +23,12 @@ parts:
   - caption: Weekly materials
     chapters:
     - file: weeks/weeks-overview.md
-#      sections:
-#      - file: weeks/week1.md
-#      - file: weeks/week2.md
-#      - file: weeks/week3.md
-#      - file: weeks/week4.md
-#      - file: weeks/week5.md
+      sections:
+      - file: weeks/week1.md
+      - file: weeks/week2.md
+      - file: weeks/week3.md
+      - file: weeks/week4.md
+      - file: weeks/week5.md
+      - file: weeks/week6.md
+      - file: weeks/week7.md
+      - file: weeks/week8.md
