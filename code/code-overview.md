@@ -14,7 +14,7 @@ Only application exercises
 - [14. Stacked bar plot](../code/14-stacked-bar-chart-altair.ipynb)
 - [15. Standardized bar plot](../code/15-standardized-bar-chart-altair.ipynb)
 - [16. Pie chart](../code/16-pie-charts-altair.ipynb)
-- [17. Contingency tables](../code/17-b-contingency-table-bar-plot.ipynb)
+- [17. Contingency tables](../code/17-contingency-table.ipynb)
 - [18. Contingency tables with proportions](../code/18-row-column-proportions.ipynb)
 - [19. Scatterplot](../code/19-scatterplot-paired-data-altair.ipynb)
 - [20. Dot plot, mean, median and mode](../code/20-dot-plots-mean-altair.ipynb)
@@ -29,8 +29,11 @@ Only application exercises
 
 ## Week 3
 
-- 28. to 31. are application exercises 
-- [32. Fitting a line and residuals](../code/32-fitting-g.ipynb)
+```{note}
+Code 28. to 31. are application exercises 
+```
+
+- [32. Fitting a line and residuals](../code/32-fitting.ipynb)
 - [33. Correlation](../code/33-correlation.ipynb)
 - [34. Least squares regression](../code/34-least-squares.ipynb)
 - [35. R squared](../code/35-strength-fit.ipynb)
@@ -48,7 +51,7 @@ Only application exercises
 - [45. Multiple predictors regression 1](../code/45-multiple.ipynb)
 - [46. Multiple predictors regression 2](../code/46-multiple.ipynb)
 - [47. Multiple predictors regression 3](../code/47-multiple.ipynb)
-- [48. Regression splines](../code/48-slines.ipynb)
+- [48. Regression splines](../code/48-splines.ipynb)
 - [49. Generalized additive models (GAM)](../code/49-gam.ipynb)
 
 ---
