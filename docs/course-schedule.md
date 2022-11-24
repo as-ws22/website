@@ -99,4 +99,4 @@ This overview will be updated as the semester progresses.
 |	Inferential modeling	|	8	|	88	|	CW 3	|	Inference regression randomization	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#randslope)	|		|		|
 |	Inferential modeling	|	8	|	89	|	CW 3	|	Inference regression bootsrapping	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#bootbeta1)	|		|		|
 |	Inferential modeling	|	8	|	90	|	CW 3	|	Inference regression mathematical	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#mathematical-model-interval-for-the-slope)	|		|		|
-|	Probability & Bayes	|	8	|	91	|	CW 3	|	Probability & Bayes' theorem	|	[📚](https://www.youtube.com/watch?v=HZGCoVF3YvM)	|		|		|
+|	Probability & Bayes	|	8	|	91	|	CW 3	|	Probability & Bayes' theorem	|	[📺](https://www.youtube.com/watch?v=HZGCoVF3YvM)	|		|		|
