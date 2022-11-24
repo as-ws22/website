@@ -11,7 +11,11 @@
 | Online          | 27.11.22-18.01.23   | 09:00  - 17:00    |  Room S303  |
 | Seminar          | 19.01.23   | 09:00  - 17:00    |  Room S303  |
 
+<br>
 
+- [Applied Statistics Moodle-Course](https://e-learning.hdm-stuttgart.de/moodle/course/view.php?id=9646)
+
+<br>
 
 ```{image} ../_static/img/room.png
 :alt: course location
@@ -21,7 +25,6 @@
 ```
 
 
-- [Applied Statistics Moodle-Course](https://e-learning.hdm-stuttgart.de/moodle/course/view.php?id=9646)
 
 ---
 
@@ -41,7 +44,7 @@ By the end of the semester, you will be able to...
 -   fit and evaluate regression and classification models to make predictions.
 -   use resampling methods to obtain reliable predictions.
 -   perform simulation-based inference using randomization and bootstrapping.
--   use traditional statistical methods to test hypothesis.
+-   use statistical methods to test hypothesis.
 -   apply Bayes' theorem, the foundation of Bayesian statistics.  
 
 
@@ -57,15 +60,15 @@ Check out the [Support](course-support.md) page for more resources.
 
 ---
 
-## Textbook
+## Textbooks
 
 Textbooks for the course:
 
-- [Introduction to Modern Statistics](https://openintro-ims.netlify.app/) by Mine Çetinkaya-Rundel and Johanna Hardin.
+- [Introduction to Modern Statistics (2021)](https://openintro-ims.netlify.app/) by Mine Çetinkaya-Rundel and Johanna Hardin.
 
-- [An Introduction to Statistical Learning](https://www.statlearning.com/) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.
+- [An Introduction to Statistical Learning (2021)](https://www.statlearning.com/) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.
 
-- Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (3rd Edition) by Aurélien Géron.
+- Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (2022, 3rd Edition) by Aurélien Géron.
 
 ---
 
