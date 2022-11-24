@@ -1,9 +1,13 @@
 # Week 4
 
 
-```{note}
-Optional: take a look at the [Bonus material](../weeks/week9.md) if you are interested in more advanced code examples (like scikit-learn pipelines)
+```{admonition} Optional
+:class: tip
+
+Optional: Take a look at the [Bonus material](../weeks/week9.md) if you are interested in more advanced code examples (like scikit-learn pipelines)
+
 ```
+
 
 
 ---

@@ -1,6 +1,13 @@
 # Week 5
 
 
+```{admonition} Optional
+:class: tip
+
+Optional: Take a look at my Jupyter Book [Feature Engineering and Selection](https://kirenz.github.io/feature-engineering/docs/intro.html) if you are interested in more advanced examples
+```
+
+
 ---
 
 (prepare)=
