@@ -7,6 +7,8 @@
 ## Prepare
 
 
+Classification (Nr. 57): [📚](https://www.statlearning.com/)
+
 Precision recall and F1 score (Nr. 58): [📚](https://mlu-explain.github.io/precision-recall/)
 
 ROC curve and AUC (Nr. 59): [📚](https://mlu-explain.github.io/roc-auc/)
