@@ -24,7 +24,6 @@ Multiple predictors classification (Nr. 61): [📚](https://openintro-ims.netlif
 
 Download slides: [📑](https://drive.google.com/file/d/1-xqu9GGXofuFrf2bWMbk0jSfwSr51xcB/view?usp=sharing)
 
-Code overview: [🖥](../code/code-overview.md)
 
 
 ---
@@ -33,7 +32,15 @@ Code overview: [🖥](../code/code-overview.md)
 ## Practice
 
 
+Code overview: [🖥](../code/code-overview.md)
 
+
+---
+
+(perform)=
+## Perform
+
+tbd
 
 
 
