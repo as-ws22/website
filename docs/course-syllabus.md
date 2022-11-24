@@ -70,6 +70,9 @@ Textbooks for the course:
 
 - Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (2022, 3rd Edition) by Aurélien Géron.
 
+- [Feature Engineering and Selection: A Practical Approach for Predictive Models (2019)](http://www.feat.engineering/index.html) by Max Kuhn and Kjell Johnson
+
+
 ---
 
 ## Lectures
