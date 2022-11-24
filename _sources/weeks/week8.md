@@ -24,8 +24,14 @@ Download slides: [📑](https://drive.google.com/file/d/10HNJ_5LvDrVLrVOXI9GhaXz
 ## Practice
 
 
+None
 
+---
 
+(perform)=
+## Perform
+
+tbd
 
 
 ---

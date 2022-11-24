@@ -21,8 +21,6 @@ Main model challenges (Nr. 41): [📚](See Hands on Machine Learning)
 
 Download slides: [📑](https://drive.google.com/file/d/1-rzYhSLOyhDUNMGj-KHE78rcHt4yseUN/view?usp=sharing)
 
-Code overview: [🖥](../code/code-overview.md)
-
 
 
 ---
@@ -31,9 +29,19 @@ Code overview: [🖥](../code/code-overview.md)
 ## Practice
 
 
+Code overview: [🖥](../code/code-overview.md)
+
+
+---
+
+(perform)=
+## Perform
+
+tbd
 
 
 
+---
 
 ---
 

@@ -44,4 +44,13 @@ Accept the invitation to application exercise Nr. 1 in Moodle: [💻 ae-1-netfli
 
 ---
 
+
+(perform)=
+## Perform
+
+
+
+
+---
+
 Back to [course schedule](../docs/course-schedule.md) ⏎

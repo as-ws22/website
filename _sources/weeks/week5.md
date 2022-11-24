@@ -19,13 +19,23 @@ Model selection methods (Nr. 52): [📚](https://openintro-ims.netlify.app/model
 
 Download slides: [📑](https://drive.google.com/file/d/1-v-4QClDIy9rKlE4vjnC7X3LAZHUldy3/view?usp=sharing)
 
-Code overview: [🖥](../code/code-overview.md)
 
 
 ---
 
 (practice)=
 ## Practice
+
+
+Code overview: [🖥](../code/code-overview.md)
+
+
+---
+
+(perform)=
+## Perform
+
+tbd
 
 
 

@@ -31,7 +31,6 @@ Outliers (Nr. 37): [📚](https://openintro-ims.netlify.app/model-slr.html#outli
 
 Download slides: [📑](https://drive.google.com/file/d/1-mcDrtEF7SrPUmSSx-DejQBiuekUaRX9/view?usp=sharing)
 
-Code overview: [🖥](../code/code-overview.md)
 
 
 ---
@@ -40,7 +39,15 @@ Code overview: [🖥](../code/code-overview.md)
 ## Practice
 
 
+Code overview: [🖥](../code/code-overview.md)
 
+
+---
+
+(perform)=
+## Perform
+
+tbd
 
 
 

@@ -48,15 +48,22 @@ Mapping data (Nr. 26): [📚](https://openintro-ims.netlify.app/explore-numerica
 
 Download slides: [📑](https://drive.google.com/file/d/1-hVUAW4V6y0Jlw-_4Zmk0nJmF9iT1s5f/view?usp=sharing)
 
-Code overview: [🖥](../code/code-overview.md)
-
 
 ---
 
 (practice)=
 ## Practice
 
+Code overview: [🖥](../code/code-overview.md)
 
+
+---
+
+
+(perform)=
+## Perform
+
+tbd
 
 
 
