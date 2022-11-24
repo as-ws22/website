@@ -6,7 +6,6 @@ This page contains a detailed overview about the topics, readings,  application 
 This overview will be updated as the semester progresses.
 :::
 
-
 |	Topic	|	Week	|	Nr.	|	Date	|	Content	|	Reading	|	AE	|	Q	|
 |	---	|	---	|	---	|	---	|	---	|	---	|	---	|	---	|
 |	Introduction	|	1	|	1	|	CW 48	|	Data driven	|		|		|		|
@@ -14,7 +13,7 @@ This overview will be updated as the semester progresses.
 |	Data	|	1	|	3	|	CW 48	|	How to obtain data	|		|		|		|
 |	Data	|	1	|	4	|	CW 48	|	First Data Analysis	|	[📚](https://openintro-ims.netlify.app/data-hello.html#case-study-stents-strokes)	|	[💻](https://e-learning.hdm-stuttgart.de/moodle/mod/page/view.php?id=267450)	|		|
 |	Data	|	1	|	5	|	CW 48	|	Data basics	|	[📚](https://openintro-ims.netlify.app/data-hello.html#data-basics)	|		|	[☑️](https://forms.gle/EJT7mcYgPi8drKgR9)	|
-|	Data	|	1	|	6	|	CW 48	|	Data preparation (optional)	|		|		|		|
+|	Data	|	1	|	6	|	CW 48	|	Data preparation, optional	|		|		|		|
 |	Study design	|	1	|	7	|	CW 48	|	Population and sample	|	[📚](https://openintro-ims.netlify.app/data-design.html#data-design)	|		|	[☑️](https://forms.gle/qPYg55ncRyUGCqXH8)	|
 |	Study design	|	1	|	8	|	CW 48	|	Sampling methods	|	[📚](https://openintro-ims.netlify.app/data-design.html#sampling-principles-strategies)	|		|	[☑️](https://forms.gle/SnQsTPKF5CRQ1Wa49)	|
 |	Study design	|	1	|	9	|	CW 48	|	Experiments	|	[📚](https://openintro-ims.netlify.app/data-design.html#experiments)	|		|	[☑️](https://forms.gle/6Tu92Ez83XANW8Un6)	|
@@ -35,36 +34,36 @@ This overview will be updated as the semester progresses.
 |	EDA: numerical data	|	2	|	24	|	CW 49	|	Robust statistics and transformations	|	[📚](https://openintro-ims.netlify.app/explore-numerical.html#robust-statistics)	|		|		|
 |	EDA: numerical + categorical	|	2	|	25	|	CW 49	|	Comparing numerical data across groups	|	[📚](https://openintro-ims.netlify.app/explore-categorical.html#comparing-numerical-data-across-groups)	|		|		|
 |	EDA: maps	|	2	|	26	|	CW 49	|	Mapping data	|	[📚](https://openintro-ims.netlify.app/explore-numerical.html#mapping-data)	|		|		|
-|	EDA: case	|	2	|	27	|	CW 49	|	Date analysis case (Umfrage)	|		|		|		|
-|	Linear regression	|	3	|	28	|	CW 50	|	Sales and ads (models 1)	|		|	[💻](https://e-learning.hdm-stuttgart.de/moodle/mod/page/view.php?id=267450)	|		|
-|	Linear regression	|	3	|	29	|	CW 50	|	Mean squared error 1 (models 2)	|		|	[💻](https://e-learning.hdm-stuttgart.de/moodle/mod/page/view.php?id=267450)	|		|
-|	Linear regression	|	3	|	30	|	CW 50	|	Mean squared error 2 (models 3)	|		|	[💻](https://e-learning.hdm-stuttgart.de/moodle/mod/page/view.php?id=267450)	|		|
-|	Linear regression	|	3	|	31	|	CW 50	|	Mean squared error 3 (models 4)	|		|	[💻](https://e-learning.hdm-stuttgart.de/moodle/mod/page/view.php?id=267450)	|		|
+|	EDA: case	|	2	|	27	|	CW 49	|	Date analysis case, Umfrage	|		|		|		|
+|	Linear regression	|	3	|	28	|	CW 50	|	Sales and ads, models 1	|		|	[💻](https://e-learning.hdm-stuttgart.de/moodle/mod/page/view.php?id=267450)	|		|
+|	Linear regression	|	3	|	29	|	CW 50	|	Mean squared error 1, models 2	|		|	[💻](https://e-learning.hdm-stuttgart.de/moodle/mod/page/view.php?id=267450)	|		|
+|	Linear regression	|	3	|	30	|	CW 50	|	Mean squared error 2, models 3	|		|	[💻](https://e-learning.hdm-stuttgart.de/moodle/mod/page/view.php?id=267450)	|		|
+|	Linear regression	|	3	|	31	|	CW 50	|	Mean squared error 3, models 4	|		|	[💻](https://e-learning.hdm-stuttgart.de/moodle/mod/page/view.php?id=267450)	|		|
 |	Linear regression	|	3	|	32	|	CW 50	|	Fitting a line and residuals	|	[📚](https://openintro-ims.netlify.app/model-slr.html#fit-line-res-cor)	|		|	[☑️](https://forms.gle/JFMXzjByDRGZtbDx8)	|
 |	Linear regression	|	3	|	33	|	CW 50	|	Correlation	|	[📚](https://openintro-ims.netlify.app/model-slr.html#describing-linear-relationships-with-correlation)	|		|	[☑️](https://forms.gle/5ntV6z8yHk8g4qgZ8)	|
 |	Linear regression	|	3	|	34	|	CW 50	|	Least squares regression	|	[📚](https://openintro-ims.netlify.app/model-slr.html#least-squares-regression)	|		|		|
 |	Linear regression	|	3	|	35	|	CW 50	|	R squared	|	[📚](https://openintro-ims.netlify.app/model-slr.html#r-squared)	|		|		|
 |	Linear regression	|	3	|	36	|	CW 50	|	Categorical predictors with two levels	|	[📚](https://openintro-ims.netlify.app/model-slr.html#categorical-predictor-two-levels)	|		|		|
 |	Linear regression	|	3	|	37	|	CW 50	|	Outliers	|	[📚](https://openintro-ims.netlify.app/model-slr.html#outliers-in-regression)	|		|		|
-|	Models	|	4	|	38	|	CW 51	|	Statistical Learning & Machine Learning	|		|		|		|
+|	Models	|	4	|	38	|	CW 51	|	Statistical Learning, Machine Learning	|		|		|		|
 |	Models	|	4	|	39	|	CW 51	|	Types of Models	|		|		|		|
-|	Models	|	4	|	40	|	CW 51	|	Regression models (case happier)	|		|		|		|
+|	Models	|	4	|	40	|	CW 51	|	Regression models, case happier	|		|		|		|
 |	Models	|	4	|	41	|	CW 51	|	Main model challenges	|	[📚](https://e-learning.hdm-stuttgart.de/moodle/pluginfile.php/430097/mod_resource/content/0/Hands%20on%20Machine%20Learning%2C%20Model%20Challenges.pdf)	|		|		|
 |	Models	|	4	|	42	|	CW 51	|	Data splitting	|	[📚](https://mlu-explain.github.io/train-test-validation/)	|		|		|
-|	Models	|	4	|	43	|	CW 51	|	Sales prediction 1 (without data splitting)	|		|		|		|
-|	Models	|	4	|	44	|	CW 51	|	Sales prediction 2 (with data splitting)	|		|		|		|
+|	Models	|	4	|	43	|	CW 51	|	Sales prediction	|		|		|		|
+|	Models	|	4	|	44	|	CW 51	|	Sales prediction with data splitting	|		|		|		|
 |	Models	|	4	|	45	|	CW 51	|	Multiple predictors regression 1	|	[📚](https://openintro-ims.netlify.app/model-mlr.html#model-mlr)	|		|	[☑️](https://forms.gle/wHPHMvbTDczNaQD97)	|
 |	Models	|	4	|	46	|	CW 51	|	Multiple predictors regression 2	|		|		|		|
 |	Models	|	4	|	47	|	CW 51	|	Multiple predictors regression 3	|		|		|		|
 |	Models	|	4	|	48	|	CW 51	|	Regression splines	|	[📚](https://www.statlearning.com/)	|		|		|
-|	Models	|	4	|	49	|	CW 51	|	Generalized additive models (GAM)	|	[📚](https://www.statlearning.com/)	|		|		|
+|	Models	|	4	|	49	|	CW 51	|	Generalized additive models	|	[📚](https://www.statlearning.com/)	|		|		|
 |	Model selection	|	5	|	50	|	CW 52	|	Adjusted R squared	|	[📚](https://openintro-ims.netlify.app/model-mlr.html#adjusted-r-squared)	|		|		|
 |	Model selection	|	5	|	51	|	CW 52	|	Regression diagnostics	|	[📚](https://mlu-explain.github.io/linear-regression/)	|		|		|
 |	Model selection	|	5	|	52	|	CW 52	|	Model selection methods	|	[📚](http://www.feat.engineering/selection.html)	|		|		|
-|	Model selection	|	5	|	53	|	CW 52	|	Model selection: Implicit (Lasso)	|	[📚](https://www.statlearning.com/)	|		|		|
+|	Model selection	|	5	|	53	|	CW 52	|	Implivit model selection	|	[📚](https://www.statlearning.com/)	|		|		|
 |	Model selection	|	5	|	54	|	CW 52	|	Lasso regression	|	[📚](https://www.statlearning.com/)	|		|		|
-|	Model selection	|	5	|	55	|	CW 52	|	Model selection: Filter	|	[📚](http://www.feat.engineering/selection.html)	|		|		|
-|	Model selection	|	5	|	56	|	CW 52	|	Model selection: Wrapper	|	[📚](http://www.feat.engineering/selection.html)	|		|		|
+|	Model selection	|	5	|	55	|	CW 52	|	Filter model selection	|	[📚](http://www.feat.engineering/selection.html)	|		|		|
+|	Model selection	|	5	|	56	|	CW 52	|	Wrapper model selection	|	[📚](http://www.feat.engineering/selection.html)	|		|		|
 |	Classification	|	6	|	57	|	CW 1	|	Classification	|	[📚](https://www.statlearning.com/)	|		|		|
 |	Classification	|	6	|	58	|	CW 1	|	Precision recall and F1 score	|	[📚](https://mlu-explain.github.io/precision-recall/)	|		|		|
 |	Classification	|	6	|	59	|	CW 1	|	ROC curve and AUC	|	[📚](https://mlu-explain.github.io/roc-auc/)	|		|		|
@@ -99,6 +98,6 @@ This overview will be updated as the semester progresses.
 |	Inferential modeling	|	8	|	88	|	CW 3	|	Inference regression randomization	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#randslope)	|		|		|
 |	Inferential modeling	|	8	|	89	|	CW 3	|	Inference regression bootsrapping	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#bootbeta1)	|		|		|
 |	Inferential modeling	|	8	|	90	|	CW 3	|	Inference regression mathematical	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#mathematical-model-interval-for-the-slope)	|		|		|
-|	Probability & Bayes	|	8	|	91	|	CW 3	|	Probability & Bayes' theorem	|	[📺](https://www.youtube.com/watch?v=HZGCoVF3YvM)	|		|		|
+|	Probability & Bayes	|	8	|	91	|	CW 3	|	Probability and Bayes	|	[📺](https://www.youtube.com/watch?v=HZGCoVF3YvM)	|		|		|
 |	Models	|	4	|	92	|	Bonus	|	Data science project housing	|	[📚](https://e-learning.hdm-stuttgart.de/moodle/pluginfile.php/430095/mod_resource/content/0/Hands%20on%20Machine%20Learning%2C%20project.pdf)	|		|		|
 |	Models	|	4	|	93	|	Bonus	|	Data science with Python	|	[📚](https://kirenz.github.io/ds-python/docs/intro.html)	|		|		|
