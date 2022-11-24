@@ -8,8 +8,17 @@
 
 Adjusted R squared (Nr. 50): [📚](https://openintro-ims.netlify.app/model-mlr.html#adjusted-r-squared)
 
-Model selection methods (Nr. 52): [📚](https://openintro-ims.netlify.app/model-mlr.html#model-selection)
+Regression diagnostics (Nr. 51): [📚](https://mlu-explain.github.io/linear-regression/)
 
+Model selection methods (Nr. 52): [📚](http://www.feat.engineering/selection.html)
+
+Model selection: Implicit (Lasso) (Nr. 53): [📚](https://www.statlearning.com/)
+
+Lasso regression (Nr. 54): [📚](https://www.statlearning.com/)
+
+Model selection: Filter (Nr. 55): [📚](http://www.feat.engineering/selection.html)
+
+Model selection: Wrapper (Nr. 56): [📚](http://www.feat.engineering/selection.html)
 
 ---
 
