@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Fitting a line &#8212; Applied Statistics</title>
+    <title>Correlation &#8212; Applied Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -466,40 +466,20 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#analysis">
    Analysis
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model">
-   Model
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#select-model">
-     Select model
+    <a class="reference internal nav-link" href="#descriptive-analysis">
+     Descriptive analysis
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fit-model">
-     Fit model
+    <a class="reference internal nav-link" href="#explorative-analysis">
+     Explorative analysis
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coefficients">
-     Coefficients
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#make-predictions">
-     Make predictions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-squared-error">
-     Mean squared error
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#root-mean-squared-error">
-     Root mean squared error
+    <a class="reference internal nav-link" href="#id1">
+     Correlation
     </a>
    </li>
   </ul>
@@ -513,7 +493,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Fitting a line</h1>
+                <h1>Correlation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -554,40 +534,20 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#analysis">
    Analysis
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model">
-   Model
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#select-model">
-     Select model
+    <a class="reference internal nav-link" href="#descriptive-analysis">
+     Descriptive analysis
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fit-model">
-     Fit model
+    <a class="reference internal nav-link" href="#explorative-analysis">
+     Explorative analysis
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coefficients">
-     Coefficients
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#make-predictions">
-     Make predictions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-squared-error">
-     Mean squared error
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#root-mean-squared-error">
-     Root mean squared error
+    <a class="reference internal nav-link" href="#id1">
+     Correlation
     </a>
    </li>
   </ul>
@@ -602,27 +562,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="fitting-a-line">
-<h1>Fitting a line<a class="headerlink" href="#fitting-a-line" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="correlation">
+<h1>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">#</a></h1>
 <section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-
-<span class="kn">import</span> <span class="nn">warnings</span>
-
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
-<span class="n">alt</span><span class="o">.</span><span class="n">data_transformers</span><span class="o">.</span><span class="n">disable_max_rows</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DataTransformerRegistry.enable(&#39;default&#39;)
 </pre></div>
 </div>
 </div>
@@ -634,7 +581,7 @@ title="Print to PDF"
 <h3>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/kirenz/datasets/master/elmhurst.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/kirenz/datasets/master/possum.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -644,7 +591,7 @@ title="Print to PDF"
 <h3>Data structure<a class="headerlink" href="#data-structure" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -667,44 +614,141 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>family_income</th>
-      <th>gift_aid</th>
-      <th>price_paid</th>
+      <th>site</th>
+      <th>pop</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>head_l</th>
+      <th>skull_w</th>
+      <th>total_l</th>
+      <th>tail_l</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>92.922</td>
-      <td>21.72</td>
-      <td>14.28</td>
+      <td>1</td>
+      <td>Vic</td>
+      <td>m</td>
+      <td>8.0</td>
+      <td>94.1</td>
+      <td>60.4</td>
+      <td>89.0</td>
+      <td>36.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.250</td>
-      <td>27.47</td>
-      <td>8.53</td>
+      <td>1</td>
+      <td>Vic</td>
+      <td>f</td>
+      <td>6.0</td>
+      <td>92.5</td>
+      <td>57.6</td>
+      <td>91.5</td>
+      <td>36.5</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>53.092</td>
-      <td>27.75</td>
-      <td>14.25</td>
+      <td>1</td>
+      <td>Vic</td>
+      <td>f</td>
+      <td>6.0</td>
+      <td>94.0</td>
+      <td>60.0</td>
+      <td>95.5</td>
+      <td>39.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>50.200</td>
-      <td>27.22</td>
-      <td>8.78</td>
+      <td>1</td>
+      <td>Vic</td>
+      <td>f</td>
+      <td>6.0</td>
+      <td>93.2</td>
+      <td>57.1</td>
+      <td>92.0</td>
+      <td>38.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>137.613</td>
-      <td>18.00</td>
-      <td>24.00</td>
+      <td>1</td>
+      <td>Vic</td>
+      <td>f</td>
+      <td>2.0</td>
+      <td>91.5</td>
+      <td>56.3</td>
+      <td>85.5</td>
+      <td>36.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>7</td>
+      <td>other</td>
+      <td>m</td>
+      <td>1.0</td>
+      <td>89.5</td>
+      <td>56.0</td>
+      <td>81.5</td>
+      <td>36.5</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>7</td>
+      <td>other</td>
+      <td>m</td>
+      <td>1.0</td>
+      <td>88.6</td>
+      <td>54.7</td>
+      <td>82.5</td>
+      <td>39.0</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>7</td>
+      <td>other</td>
+      <td>f</td>
+      <td>6.0</td>
+      <td>92.4</td>
+      <td>55.0</td>
+      <td>89.0</td>
+      <td>38.0</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>7</td>
+      <td>other</td>
+      <td>m</td>
+      <td>4.0</td>
+      <td>91.5</td>
+      <td>55.2</td>
+      <td>82.5</td>
+      <td>36.5</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>7</td>
+      <td>other</td>
+      <td>f</td>
+      <td>3.0</td>
+      <td>93.6</td>
+      <td>59.9</td>
+      <td>89.0</td>
+      <td>40.0</td>
     </tr>
   </tbody>
 </table>
+<p>104 rows × 8 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -715,15 +759,20 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 50 entries, 0 to 49
-Data columns (total 3 columns):
- #   Column         Non-Null Count  Dtype  
----  ------         --------------  -----  
- 0   family_income  50 non-null     float64
- 1   gift_aid       50 non-null     float64
- 2   price_paid     50 non-null     float64
-dtypes: float64(3)
-memory usage: 1.3 KB
+RangeIndex: 104 entries, 0 to 103
+Data columns (total 8 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   site     104 non-null    int64  
+ 1   pop      104 non-null    object 
+ 2   sex      104 non-null    object 
+ 3   age      102 non-null    float64
+ 4   head_l   104 non-null    float64
+ 5   skull_w  104 non-null    float64
+ 6   total_l  104 non-null    float64
+ 7   tail_l   104 non-null    float64
+dtypes: float64(5), int64(1), object(2)
+memory usage: 6.6+ KB
 </pre></div>
 </div>
 </div>
@@ -731,14 +780,12 @@ memory usage: 1.3 KB
 </section>
 <section id="variable-lists">
 <h3>Variable lists<a class="headerlink" href="#variable-lists" title="Permalink to this headline">#</a></h3>
-<p>Prepara data for scikit-learn model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare the data</span>
-<span class="n">y_label</span> <span class="o">=</span> <span class="s2">&quot;gift_aid&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define outcome variable as y_label</span>
+<span class="n">y_label</span> <span class="o">=</span> <span class="s1">&#39;head_l&#39;</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;family_income&quot;</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">y_label</span><span class="p">]</span>
+<span class="n">list_numeric</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;head_l&#39;</span><span class="p">,</span> <span class="s1">&#39;skull_w&#39;</span><span class="p">,</span> <span class="s1">&#39;total_l&#39;</span><span class="p">,</span> <span class="s1">&#39;tail_l&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -747,24 +794,147 @@ memory usage: 1.3 KB
 </section>
 <section id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">#</a></h2>
+<section id="descriptive-analysis">
+<h3>Descriptive analysis<a class="headerlink" href="#descriptive-analysis" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>site</th>
+      <td>104.0</td>
+      <td>3.625000</td>
+      <td>2.349086</td>
+      <td>1.0</td>
+      <td>1.000</td>
+      <td>3.00</td>
+      <td>6.000</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>age</th>
+      <td>102.0</td>
+      <td>3.833333</td>
+      <td>1.909244</td>
+      <td>1.0</td>
+      <td>2.250</td>
+      <td>3.00</td>
+      <td>5.000</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>head_l</th>
+      <td>104.0</td>
+      <td>92.602885</td>
+      <td>3.573349</td>
+      <td>82.5</td>
+      <td>90.675</td>
+      <td>92.80</td>
+      <td>94.725</td>
+      <td>103.1</td>
+    </tr>
+    <tr>
+      <th>skull_w</th>
+      <td>104.0</td>
+      <td>56.883654</td>
+      <td>3.113426</td>
+      <td>50.0</td>
+      <td>54.975</td>
+      <td>56.35</td>
+      <td>58.100</td>
+      <td>68.6</td>
+    </tr>
+    <tr>
+      <th>total_l</th>
+      <td>104.0</td>
+      <td>87.088462</td>
+      <td>4.310549</td>
+      <td>75.0</td>
+      <td>84.000</td>
+      <td>88.00</td>
+      <td>90.000</td>
+      <td>96.5</td>
+    </tr>
+    <tr>
+      <th>tail_l</th>
+      <td>104.0</td>
+      <td>37.009615</td>
+      <td>1.959518</td>
+      <td>32.0</td>
+      <td>35.875</td>
+      <td>37.00</td>
+      <td>38.000</td>
+      <td>43.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="explorative-analysis">
+<h3>Explorative analysis<a class="headerlink" href="#explorative-analysis" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;family_income&#39;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;gift_aid&#39;</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s2">&quot;column&quot;</span><span class="p">),</span> 
+            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;quantitative&#39;</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">zero</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s2">&quot;row&quot;</span><span class="p">),</span> 
+            <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;quantitative&#39;</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">zero</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+             <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">150</span>
+<span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
+    <span class="n">row</span><span class="o">=</span><span class="n">list_numeric</span><span class="p">,</span>
+    <span class="n">column</span><span class="o">=</span><span class="n">list_numeric</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-2428ae020c5a4e2b9048ed21aeebab28"></div>
+<div id="altair-viz-391b9891e00f48a7902e0e72fb8f4a67"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-2428ae020c5a4e2b9048ed21aeebab28") {
-      outputDiv = document.getElementById("altair-viz-2428ae020c5a4e2b9048ed21aeebab28");
+    if (outputDiv.id !== "altair-viz-391b9891e00f48a7902e0e72fb8f4a67") {
+      outputDiv = document.getElementById("altair-viz-391b9891e00f48a7902e0e72fb8f4a67");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -810,89 +980,329 @@ memory usage: 1.3 KB
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-95509acc606e9a8541b89bcb68cbc819"}, "mark": "circle", "encoding": {"x": {"field": "family_income", "type": "quantitative"}, "y": {"field": "gift_aid", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-95509acc606e9a8541b89bcb68cbc819": [{"family_income": 92.922, "gift_aid": 21.72, "price_paid": 14.28}, {"family_income": 0.25, "gift_aid": 27.47, "price_paid": 8.53}, {"family_income": 53.092, "gift_aid": 27.75, "price_paid": 14.25}, {"family_income": 50.2, "gift_aid": 27.22, "price_paid": 8.78}, {"family_income": 137.613, "gift_aid": 18.0, "price_paid": 24.0}, {"family_income": 47.957, "gift_aid": 18.52, "price_paid": 23.48}, {"family_income": 113.534, "gift_aid": 13.0, "price_paid": 23.0}, {"family_income": 168.579, "gift_aid": 13.0, "price_paid": 29.0}, {"family_income": 208.115, "gift_aid": 14.0, "price_paid": 28.0}, {"family_income": 12.523, "gift_aid": 25.47, "price_paid": 16.53}, {"family_income": 119.822, "gift_aid": 21.0, "price_paid": 15.0}, {"family_income": 50.563, "gift_aid": 17.476, "price_paid": 18.524}, {"family_income": 16.12, "gift_aid": 22.47, "price_paid": 13.53}, {"family_income": 206.932, "gift_aid": 11.0, "price_paid": 25.0}, {"family_income": 68.678, "gift_aid": 25.72, "price_paid": 16.28}, {"family_income": 73.598, "gift_aid": 32.72, "price_paid": 9.28}, {"family_income": 218.12, "gift_aid": 23.0, "price_paid": 19.0}, {"family_income": 89.983, "gift_aid": 16.0, "price_paid": 20.0}, {"family_income": 271.974, "gift_aid": 20.0, "price_paid": 22.0}, {"family_income": 118.165, "gift_aid": 24.0, "price_paid": 18.0}, {"family_income": 108.395, "gift_aid": 15.5, "price_paid": 26.5}, {"family_income": 235.522, "gift_aid": 7.0, "price_paid": 35.0}, {"family_income": 78.926, "gift_aid": 20.0, "price_paid": 16.0}, {"family_income": 76.854, "gift_aid": 23.52, "price_paid": 18.48}, {"family_income": 98.496, "gift_aid": 14.0, "price_paid": 22.0}, {"family_income": 134.586, "gift_aid": 10.0, "price_paid": 32.0}, {"family_income": 75.157, "gift_aid": 21.12, "price_paid": 20.88}, {"family_income": 135.857, "gift_aid": 21.0, "price_paid": 21.0}, {"family_income": 79.448, "gift_aid": 27.5, "price_paid": 14.5}, {"family_income": 80.858, "gift_aid": 20.55, "price_paid": 15.45}, {"family_income": 86.14, "gift_aid": 14.3, "price_paid": 27.7}, {"family_income": 40.49, "gift_aid": 18.32, "price_paid": 23.68}, {"family_income": 143.337, "gift_aid": 18.0, "price_paid": 24.0}, {"family_income": 97.664, "gift_aid": 10.0, "price_paid": 26.0}, {"family_income": 74.713, "gift_aid": 21.0, "price_paid": 15.0}, {"family_income": 178.795, "gift_aid": 13.6, "price_paid": 22.4}, {"family_income": 71.55, "gift_aid": 20.47, "price_paid": 15.53}, {"family_income": 92.605, "gift_aid": 21.0, "price_paid": 15.0}, {"family_income": 62.546, "gift_aid": 21.6, "price_paid": 14.4}, {"family_income": 0.0, "gift_aid": 27.47, "price_paid": 14.53}, {"family_income": 159.981, "gift_aid": 25.814, "price_paid": 10.186}, {"family_income": 40.397, "gift_aid": 25.97, "price_paid": 10.03}, {"family_income": 85.203, "gift_aid": 25.558, "price_paid": 16.442}, {"family_income": 27.164, "gift_aid": 20.47, "price_paid": 21.53}, {"family_income": 146.397, "gift_aid": 17.0, "price_paid": 25.0}, {"family_income": 14.089, "gift_aid": 20.42, "price_paid": 21.58}, {"family_income": 217.443, "gift_aid": 20.0, "price_paid": 22.0}, {"family_income": 140.093, "gift_aid": 15.0, "price_paid": 21.0}, {"family_income": 104.147, "gift_aid": 17.56, "price_paid": 24.44}, {"family_income": 83.333, "gift_aid": 23.5, "price_paid": 18.5}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "repeat": {"column": ["age", "head_l", "skull_w", "total_l", "tail_l"], "row": ["age", "head_l", "skull_w", "total_l", "tail_l"]}, "spec": {"data": {"name": "data-6f19ab7b804933fb23fa2115095b23c3"}, "mark": "circle", "encoding": {"x": {"field": {"repeat": "column"}, "scale": {"zero": false}, "type": "quantitative"}, "y": {"field": {"repeat": "row"}, "scale": {"zero": false}, "type": "quantitative"}}, "height": 150, "width": 150}, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-6f19ab7b804933fb23fa2115095b23c3": [{"site": 1, "pop": "Vic", "sex": "m", "age": 8.0, "head_l": 94.1, "skull_w": 60.4, "total_l": 89.0, "tail_l": 36.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 6.0, "head_l": 92.5, "skull_w": 57.6, "total_l": 91.5, "tail_l": 36.5}, {"site": 1, "pop": "Vic", "sex": "f", "age": 6.0, "head_l": 94.0, "skull_w": 60.0, "total_l": 95.5, "tail_l": 39.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 6.0, "head_l": 93.2, "skull_w": 57.1, "total_l": 92.0, "tail_l": 38.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 2.0, "head_l": 91.5, "skull_w": 56.3, "total_l": 85.5, "tail_l": 36.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 1.0, "head_l": 93.1, "skull_w": 54.8, "total_l": 90.5, "tail_l": 35.5}, {"site": 1, "pop": "Vic", "sex": "m", "age": 2.0, "head_l": 95.3, "skull_w": 58.2, "total_l": 89.5, "tail_l": 36.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 6.0, "head_l": 94.8, "skull_w": 57.6, "total_l": 91.0, "tail_l": 37.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 9.0, "head_l": 93.4, "skull_w": 56.3, "total_l": 91.5, "tail_l": 37.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 6.0, "head_l": 91.8, "skull_w": 58.0, "total_l": 89.5, "tail_l": 37.5}, {"site": 1, "pop": "Vic", "sex": "f", "age": 9.0, "head_l": 93.3, "skull_w": 57.2, "total_l": 89.5, "tail_l": 39.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 5.0, "head_l": 94.9, "skull_w": 55.6, "total_l": 92.0, "tail_l": 35.5}, {"site": 1, "pop": "Vic", "sex": "m", "age": 5.0, "head_l": 95.1, "skull_w": 59.9, "total_l": 89.5, "tail_l": 36.0}, {"site": 1, "pop": "Vic", "sex": "m", "age": 3.0, "head_l": 95.4, "skull_w": 57.6, "total_l": 91.5, "tail_l": 36.0}, {"site": 1, "pop": "Vic", "sex": "m", "age": 5.0, "head_l": 92.9, "skull_w": 57.6, "total_l": 85.5, "tail_l": 34.0}, {"site": 1, "pop": "Vic", "sex": "m", "age": 4.0, "head_l": 91.6, "skull_w": 56.0, "total_l": 86.0, "tail_l": 34.5}, {"site": 1, "pop": "Vic", "sex": "f", "age": 1.0, "head_l": 94.7, "skull_w": 67.7, "total_l": 89.5, "tail_l": 36.5}, {"site": 1, "pop": "Vic", "sex": "m", "age": 2.0, "head_l": 93.5, "skull_w": 55.7, "total_l": 90.0, "tail_l": 36.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 5.0, "head_l": 94.4, "skull_w": 55.4, "total_l": 90.5, "tail_l": 35.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 4.0, "head_l": 94.8, "skull_w": 56.3, "total_l": 89.0, "tail_l": 38.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 3.0, "head_l": 95.9, "skull_w": 58.1, "total_l": 96.5, "tail_l": 39.5}, {"site": 1, "pop": "Vic", "sex": "m", "age": 3.0, "head_l": 96.3, "skull_w": 58.5, "total_l": 91.0, "tail_l": 39.5}, {"site": 1, "pop": "Vic", "sex": "f", "age": 4.0, "head_l": 92.5, "skull_w": 56.1, "total_l": 89.0, "tail_l": 36.0}, {"site": 1, "pop": "Vic", "sex": "m", "age": 2.0, "head_l": 94.4, "skull_w": 54.9, "total_l": 84.0, "tail_l": 34.0}, {"site": 1, "pop": "Vic", "sex": "m", "age": 3.0, "head_l": 95.8, "skull_w": 58.5, "total_l": 91.5, "tail_l": 35.5}, {"site": 1, "pop": "Vic", "sex": "m", "age": 7.0, "head_l": 96.0, "skull_w": 59.0, "total_l": 90.0, "tail_l": 36.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 2.0, "head_l": 90.5, "skull_w": 54.5, "total_l": 85.0, "tail_l": 35.0}, {"site": 1, "pop": "Vic", "sex": "m", "age": 4.0, "head_l": 93.8, "skull_w": 56.8, "total_l": 87.0, "tail_l": 34.5}, {"site": 1, "pop": "Vic", "sex": "f", "age": 3.0, "head_l": 92.8, "skull_w": 56.0, "total_l": 88.0, "tail_l": 35.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 2.0, "head_l": 92.1, "skull_w": 54.4, "total_l": 84.0, "tail_l": 33.5}, {"site": 1, "pop": "Vic", "sex": "m", "age": 3.0, "head_l": 92.8, "skull_w": 54.1, "total_l": 93.0, "tail_l": 37.0}, {"site": 1, "pop": "Vic", "sex": "f", "age": 4.0, "head_l": 94.3, "skull_w": 56.7, "total_l": 94.0, "tail_l": 39.0}, {"site": 1, "pop": "Vic", "sex": "m", "age": 3.0, "head_l": 91.4, "skull_w": 54.6, "total_l": 89.0, "tail_l": 37.0}, {"site": 2, "pop": "Vic", "sex": "m", "age": 2.0, "head_l": 90.6, "skull_w": 55.7, "total_l": 85.5, "tail_l": 36.5}, {"site": 2, "pop": "Vic", "sex": "m", "age": 4.0, "head_l": 94.4, "skull_w": 57.9, "total_l": 85.0, "tail_l": 35.5}, {"site": 2, "pop": "Vic", "sex": "m", "age": 7.0, "head_l": 93.3, "skull_w": 59.3, "total_l": 88.0, "tail_l": 35.0}, {"site": 2, "pop": "Vic", "sex": "f", "age": 2.0, "head_l": 89.3, "skull_w": 54.8, "total_l": 82.5, "tail_l": 35.0}, {"site": 2, "pop": "Vic", "sex": "m", "age": 7.0, "head_l": 92.4, "skull_w": 56.0, "total_l": 80.5, "tail_l": 35.5}, {"site": 2, "pop": "Vic", "sex": "f", "age": 1.0, "head_l": 84.7, "skull_w": 51.5, "total_l": 75.0, "tail_l": 34.0}, {"site": 2, "pop": "Vic", "sex": "f", "age": 3.0, "head_l": 91.0, "skull_w": 55.0, "total_l": 84.5, "tail_l": 36.0}, {"site": 2, "pop": "Vic", "sex": "f", "age": 5.0, "head_l": 88.4, "skull_w": 57.0, "total_l": 83.0, "tail_l": 36.5}, {"site": 2, "pop": "Vic", "sex": "m", "age": 3.0, "head_l": 85.3, "skull_w": 54.1, "total_l": 77.0, "tail_l": 32.0}, {"site": 2, "pop": "Vic", "sex": "f", "age": 2.0, "head_l": 90.0, "skull_w": 55.5, "total_l": 81.0, "tail_l": 32.0}, {"site": 2, "pop": "Vic", "sex": "m", "age": null, "head_l": 85.1, "skull_w": 51.5, "total_l": 76.0, "tail_l": 35.5}, {"site": 2, "pop": "Vic", "sex": "m", "age": 3.0, "head_l": 90.7, "skull_w": 55.9, "total_l": 81.0, "tail_l": 34.0}, {"site": 2, "pop": "Vic", "sex": "m", "age": null, "head_l": 91.4, "skull_w": 54.4, "total_l": 84.0, "tail_l": 35.0}, {"site": 3, "pop": "other", "sex": "m", "age": 2.0, "head_l": 90.1, "skull_w": 54.8, "total_l": 89.0, "tail_l": 37.5}, {"site": 3, "pop": "other", "sex": "m", "age": 5.0, "head_l": 98.6, "skull_w": 63.2, "total_l": 85.0, "tail_l": 34.0}, {"site": 3, "pop": "other", "sex": "m", "age": 4.0, "head_l": 95.4, "skull_w": 59.2, "total_l": 85.0, "tail_l": 37.0}, {"site": 3, "pop": "other", "sex": "f", "age": 5.0, "head_l": 91.6, "skull_w": 56.4, "total_l": 88.0, "tail_l": 38.0}, {"site": 3, "pop": "other", "sex": "f", "age": 5.0, "head_l": 95.6, "skull_w": 59.6, "total_l": 85.0, "tail_l": 36.0}, {"site": 3, "pop": "other", "sex": "m", "age": 6.0, "head_l": 97.6, "skull_w": 61.0, "total_l": 93.5, "tail_l": 40.0}, {"site": 3, "pop": "other", "sex": "f", "age": 3.0, "head_l": 93.1, "skull_w": 58.1, "total_l": 91.0, "tail_l": 38.0}, {"site": 4, "pop": "other", "sex": "m", "age": 7.0, "head_l": 96.9, "skull_w": 63.0, "total_l": 91.5, "tail_l": 43.0}, {"site": 4, "pop": "other", "sex": "m", "age": 2.0, "head_l": 103.1, "skull_w": 63.2, "total_l": 92.5, "tail_l": 38.0}, {"site": 4, "pop": "other", "sex": "m", "age": 3.0, "head_l": 99.9, "skull_w": 61.5, "total_l": 93.7, "tail_l": 38.0}, {"site": 4, "pop": "other", "sex": "f", "age": 4.0, "head_l": 95.1, "skull_w": 59.4, "total_l": 93.0, "tail_l": 41.0}, {"site": 4, "pop": "other", "sex": "m", "age": 3.0, "head_l": 94.5, "skull_w": 64.2, "total_l": 91.0, "tail_l": 39.0}, {"site": 4, "pop": "other", "sex": "m", "age": 2.0, "head_l": 102.5, "skull_w": 62.8, "total_l": 96.0, "tail_l": 40.0}, {"site": 4, "pop": "other", "sex": "f", "age": 2.0, "head_l": 91.3, "skull_w": 57.7, "total_l": 88.0, "tail_l": 39.0}, {"site": 5, "pop": "other", "sex": "m", "age": 7.0, "head_l": 95.7, "skull_w": 59.0, "total_l": 86.0, "tail_l": 38.0}, {"site": 5, "pop": "other", "sex": "f", "age": 3.0, "head_l": 91.3, "skull_w": 58.0, "total_l": 90.5, "tail_l": 39.0}, {"site": 5, "pop": "other", "sex": "f", "age": 6.0, "head_l": 92.0, "skull_w": 56.4, "total_l": 88.5, "tail_l": 38.0}, {"site": 5, "pop": "other", "sex": "f", "age": 3.0, "head_l": 96.9, "skull_w": 56.5, "total_l": 89.5, "tail_l": 38.5}, {"site": 5, "pop": "other", "sex": "f", "age": 5.0, "head_l": 93.5, "skull_w": 57.4, "total_l": 88.5, "tail_l": 38.0}, {"site": 5, "pop": "other", "sex": "f", "age": 3.0, "head_l": 90.4, "skull_w": 55.8, "total_l": 86.0, "tail_l": 36.5}, {"site": 5, "pop": "other", "sex": "m", "age": 4.0, "head_l": 93.3, "skull_w": 57.6, "total_l": 85.0, "tail_l": 36.5}, {"site": 5, "pop": "other", "sex": "m", "age": 5.0, "head_l": 94.1, "skull_w": 56.0, "total_l": 88.5, "tail_l": 38.0}, {"site": 5, "pop": "other", "sex": "m", "age": 5.0, "head_l": 98.0, "skull_w": 55.6, "total_l": 88.0, "tail_l": 37.5}, {"site": 5, "pop": "other", "sex": "f", "age": 7.0, "head_l": 91.9, "skull_w": 56.4, "total_l": 87.0, "tail_l": 38.0}, {"site": 5, "pop": "other", "sex": "m", "age": 6.0, "head_l": 92.8, "skull_w": 57.6, "total_l": 90.0, "tail_l": 40.0}, {"site": 5, "pop": "other", "sex": "m", "age": 1.0, "head_l": 85.9, "skull_w": 52.4, "total_l": 80.5, "tail_l": 35.0}, {"site": 5, "pop": "other", "sex": "m", "age": 1.0, "head_l": 82.5, "skull_w": 52.3, "total_l": 82.0, "tail_l": 36.5}, {"site": 6, "pop": "other", "sex": "f", "age": 4.0, "head_l": 88.7, "skull_w": 52.0, "total_l": 83.0, "tail_l": 38.0}, {"site": 6, "pop": "other", "sex": "m", "age": 6.0, "head_l": 93.8, "skull_w": 58.1, "total_l": 89.0, "tail_l": 38.0}, {"site": 6, "pop": "other", "sex": "m", "age": 5.0, "head_l": 92.4, "skull_w": 56.8, "total_l": 89.0, "tail_l": 41.0}, {"site": 6, "pop": "other", "sex": "m", "age": 6.0, "head_l": 93.6, "skull_w": 56.2, "total_l": 84.0, "tail_l": 36.0}, {"site": 6, "pop": "other", "sex": "m", "age": 1.0, "head_l": 86.5, "skull_w": 51.0, "total_l": 81.0, "tail_l": 36.5}, {"site": 6, "pop": "other", "sex": "m", "age": 1.0, "head_l": 85.8, "skull_w": 50.0, "total_l": 81.0, "tail_l": 36.5}, {"site": 6, "pop": "other", "sex": "m", "age": 1.0, "head_l": 86.7, "skull_w": 52.6, "total_l": 84.0, "tail_l": 38.0}, {"site": 6, "pop": "other", "sex": "m", "age": 3.0, "head_l": 90.6, "skull_w": 56.0, "total_l": 85.5, "tail_l": 38.0}, {"site": 6, "pop": "other", "sex": "f", "age": 4.0, "head_l": 86.0, "skull_w": 54.0, "total_l": 82.0, "tail_l": 36.5}, {"site": 6, "pop": "other", "sex": "f", "age": 3.0, "head_l": 90.0, "skull_w": 53.8, "total_l": 81.5, "tail_l": 36.0}, {"site": 6, "pop": "other", "sex": "m", "age": 3.0, "head_l": 88.4, "skull_w": 54.6, "total_l": 80.5, "tail_l": 36.0}, {"site": 6, "pop": "other", "sex": "m", "age": 3.0, "head_l": 89.5, "skull_w": 56.2, "total_l": 92.0, "tail_l": 40.5}, {"site": 6, "pop": "other", "sex": "f", "age": 3.0, "head_l": 88.2, "skull_w": 53.2, "total_l": 86.5, "tail_l": 38.5}, {"site": 7, "pop": "other", "sex": "m", "age": 2.0, "head_l": 98.5, "skull_w": 60.7, "total_l": 93.0, "tail_l": 41.5}, {"site": 7, "pop": "other", "sex": "f", "age": 2.0, "head_l": 89.6, "skull_w": 58.0, "total_l": 87.5, "tail_l": 38.0}, {"site": 7, "pop": "other", "sex": "m", "age": 6.0, "head_l": 97.7, "skull_w": 58.4, "total_l": 84.5, "tail_l": 35.0}, {"site": 7, "pop": "other", "sex": "m", "age": 3.0, "head_l": 92.6, "skull_w": 54.6, "total_l": 85.0, "tail_l": 38.5}, {"site": 7, "pop": "other", "sex": "m", "age": 3.0, "head_l": 97.8, "skull_w": 59.6, "total_l": 89.0, "tail_l": 38.0}, {"site": 7, "pop": "other", "sex": "m", "age": 2.0, "head_l": 90.7, "skull_w": 56.3, "total_l": 85.0, "tail_l": 37.0}, {"site": 7, "pop": "other", "sex": "m", "age": 3.0, "head_l": 89.2, "skull_w": 54.0, "total_l": 82.0, "tail_l": 38.0}, {"site": 7, "pop": "other", "sex": "m", "age": 7.0, "head_l": 91.8, "skull_w": 57.6, "total_l": 84.0, "tail_l": 35.5}, {"site": 7, "pop": "other", "sex": "m", "age": 4.0, "head_l": 91.6, "skull_w": 56.6, "total_l": 88.5, "tail_l": 37.5}, {"site": 7, "pop": "other", "sex": "m", "age": 4.0, "head_l": 94.8, "skull_w": 55.7, "total_l": 83.0, "tail_l": 38.0}, {"site": 7, "pop": "other", "sex": "m", "age": 3.0, "head_l": 91.0, "skull_w": 53.1, "total_l": 86.0, "tail_l": 38.0}, {"site": 7, "pop": "other", "sex": "m", "age": 5.0, "head_l": 93.2, "skull_w": 68.6, "total_l": 84.0, "tail_l": 35.0}, {"site": 7, "pop": "other", "sex": "f", "age": 3.0, "head_l": 93.3, "skull_w": 56.2, "total_l": 86.5, "tail_l": 38.5}, {"site": 7, "pop": "other", "sex": "m", "age": 1.0, "head_l": 89.5, "skull_w": 56.0, "total_l": 81.5, "tail_l": 36.5}, {"site": 7, "pop": "other", "sex": "m", "age": 1.0, "head_l": 88.6, "skull_w": 54.7, "total_l": 82.5, "tail_l": 39.0}, {"site": 7, "pop": "other", "sex": "f", "age": 6.0, "head_l": 92.4, "skull_w": 55.0, "total_l": 89.0, "tail_l": 38.0}, {"site": 7, "pop": "other", "sex": "m", "age": 4.0, "head_l": 91.5, "skull_w": 55.2, "total_l": 82.5, "tail_l": 36.5}, {"site": 7, "pop": "other", "sex": "f", "age": 3.0, "head_l": 93.6, "skull_w": 59.9, "total_l": 89.0, "tail_l": 40.0}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
 </section>
-<section id="model">
-<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">#</a></h2>
-<section id="select-model">
-<h3>Select model<a class="headerlink" href="#select-model" title="Permalink to this headline">#</a></h3>
+<section id="id1">
+<h3>Correlation<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Methods of correlation in function <code class="docutils literal notranslate"><span class="pre">.corr()</span></code>:</p>
+<p><strong>Pearson correlation coefficient</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pearson</span></code> : Pearson correlation coefficient</p>
+<ul class="simple">
+<li><p>is only appropriate for numeric variables.</p></li>
+<li><p>can only detect linear relationships.</p></li>
+<li><p>can be misleading if there are outliers in the data.</p></li>
+</ul>
+<p><strong>Rank correlation</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">kendall</span></code> : Kendall Tau correlation coefficient<br />
+or<br />
+<code class="docutils literal notranslate"><span class="pre">spearman</span></code> : Spearman rank correlation</p>
+<ul class="simple">
+<li><p>is appropriate for both continuous and discrete ordinal variables.</p></li>
+<li><p>is better in detecting nonlinear relationships (in comparison to <code class="docutils literal notranslate"><span class="pre">pearson</span></code>)</p></li>
+<li><p>is less sensitive to outliers.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Choose the linear regression model</span>
-<span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="fit-model">
-<h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit the model to the data</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>site</th>
+      <th>age</th>
+      <th>head_l</th>
+      <th>skull_w</th>
+      <th>total_l</th>
+      <th>tail_l</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>site</th>
+      <td>1.00</td>
+      <td>-0.13</td>
+      <td>-0.16</td>
+      <td>-0.08</td>
+      <td>-0.26</td>
+      <td>0.38</td>
+    </tr>
+    <tr>
+      <th>age</th>
+      <td>-0.13</td>
+      <td>1.00</td>
+      <td>0.32</td>
+      <td>0.29</td>
+      <td>0.26</td>
+      <td>0.12</td>
+    </tr>
+    <tr>
+      <th>head_l</th>
+      <td>-0.16</td>
+      <td>0.32</td>
+      <td>1.00</td>
+      <td>0.71</td>
+      <td>0.69</td>
+      <td>0.29</td>
+    </tr>
+    <tr>
+      <th>skull_w</th>
+      <td>-0.08</td>
+      <td>0.29</td>
+      <td>0.71</td>
+      <td>1.00</td>
+      <td>0.53</td>
+      <td>0.26</td>
+    </tr>
+    <tr>
+      <th>total_l</th>
+      <td>-0.26</td>
+      <td>0.26</td>
+      <td>0.69</td>
+      <td>0.53</td>
+      <td>1.00</td>
+      <td>0.57</td>
+    </tr>
+    <tr>
+      <th>tail_l</th>
+      <td>0.38</td>
+      <td>0.12</td>
+      <td>0.29</td>
+      <td>0.26</td>
+      <td>0.57</td>
+      <td>1.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</section>
-<section id="coefficients">
-<h3>Coefficients<a class="headerlink" href="#coefficients" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Intercept</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Intercept: </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> Slope: </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_blues</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_blues</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Intercept: 24.31932900727033 
- Slope: -0.043071652125323996
+<div class="output text_html"><style type="text/css">
+#T_2c87d_row0_col0, #T_2c87d_row1_col1, #T_2c87d_row2_col2, #T_2c87d_row3_col3, #T_2c87d_row4_col4, #T_2c87d_row5_col5 {
+  background-color: #08306b;
+  color: #f1f1f1;
+}
+#T_2c87d_row0_col1, #T_2c87d_row0_col2, #T_2c87d_row0_col3, #T_2c87d_row0_col4, #T_2c87d_row1_col5, #T_2c87d_row4_col0 {
+  background-color: #f7fbff;
+  color: #000000;
+}
+#T_2c87d_row0_col5 {
+  background-color: #b8d5ea;
+  color: #000000;
+}
+#T_2c87d_row1_col0 {
+  background-color: #e3eef8;
+  color: #000000;
+}
+#T_2c87d_row1_col2, #T_2c87d_row1_col4 {
+  background-color: #8fc2de;
+  color: #000000;
+}
+#T_2c87d_row1_col3 {
+  background-color: #a9cfe5;
+  color: #000000;
+}
+#T_2c87d_row2_col0 {
+  background-color: #e7f1fa;
+  color: #000000;
+}
+#T_2c87d_row2_col1 {
+  background-color: #95c5df;
+  color: #000000;
+}
+#T_2c87d_row2_col3, #T_2c87d_row4_col2 {
+  background-color: #2575b7;
+  color: #f1f1f1;
+}
+#T_2c87d_row2_col4 {
+  background-color: #206fb4;
+  color: #f1f1f1;
+}
+#T_2c87d_row2_col5 {
+  background-color: #d1e2f3;
+  color: #000000;
+}
+#T_2c87d_row3_col0 {
+  background-color: #dbe9f6;
+  color: #000000;
+}
+#T_2c87d_row3_col1 {
+  background-color: #9fcae1;
+  color: #000000;
+}
+#T_2c87d_row3_col2 {
+  background-color: #2070b4;
+  color: #f1f1f1;
+}
+#T_2c87d_row3_col4 {
+  background-color: #4191c6;
+  color: #f1f1f1;
+}
+#T_2c87d_row3_col5 {
+  background-color: #d8e7f5;
+  color: #000000;
+}
+#T_2c87d_row4_col1 {
+  background-color: #a8cee4;
+  color: #000000;
+}
+#T_2c87d_row4_col3 {
+  background-color: #56a0ce;
+  color: #f1f1f1;
+}
+#T_2c87d_row4_col5, #T_2c87d_row5_col0 {
+  background-color: #68acd5;
+  color: #f1f1f1;
+}
+#T_2c87d_row5_col1 {
+  background-color: #ccdff1;
+  color: #000000;
+}
+#T_2c87d_row5_col2 {
+  background-color: #99c7e0;
+  color: #000000;
+}
+#T_2c87d_row5_col3 {
+  background-color: #b2d2e8;
+  color: #000000;
+}
+#T_2c87d_row5_col4 {
+  background-color: #3989c1;
+  color: #f1f1f1;
+}
+</style>
+<table id="T_2c87d">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_2c87d_level0_col0" class="col_heading level0 col0" >site</th>
+      <th id="T_2c87d_level0_col1" class="col_heading level0 col1" >age</th>
+      <th id="T_2c87d_level0_col2" class="col_heading level0 col2" >head_l</th>
+      <th id="T_2c87d_level0_col3" class="col_heading level0 col3" >skull_w</th>
+      <th id="T_2c87d_level0_col4" class="col_heading level0 col4" >total_l</th>
+      <th id="T_2c87d_level0_col5" class="col_heading level0 col5" >tail_l</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_2c87d_level0_row0" class="row_heading level0 row0" >site</th>
+      <td id="T_2c87d_row0_col0" class="data row0 col0" >1.000000</td>
+      <td id="T_2c87d_row0_col1" class="data row0 col1" >-0.130000</td>
+      <td id="T_2c87d_row0_col2" class="data row0 col2" >-0.160000</td>
+      <td id="T_2c87d_row0_col3" class="data row0 col3" >-0.080000</td>
+      <td id="T_2c87d_row0_col4" class="data row0 col4" >-0.260000</td>
+      <td id="T_2c87d_row0_col5" class="data row0 col5" >0.380000</td>
+    </tr>
+    <tr>
+      <th id="T_2c87d_level0_row1" class="row_heading level0 row1" >age</th>
+      <td id="T_2c87d_row1_col0" class="data row1 col0" >-0.130000</td>
+      <td id="T_2c87d_row1_col1" class="data row1 col1" >1.000000</td>
+      <td id="T_2c87d_row1_col2" class="data row1 col2" >0.320000</td>
+      <td id="T_2c87d_row1_col3" class="data row1 col3" >0.290000</td>
+      <td id="T_2c87d_row1_col4" class="data row1 col4" >0.260000</td>
+      <td id="T_2c87d_row1_col5" class="data row1 col5" >0.120000</td>
+    </tr>
+    <tr>
+      <th id="T_2c87d_level0_row2" class="row_heading level0 row2" >head_l</th>
+      <td id="T_2c87d_row2_col0" class="data row2 col0" >-0.160000</td>
+      <td id="T_2c87d_row2_col1" class="data row2 col1" >0.320000</td>
+      <td id="T_2c87d_row2_col2" class="data row2 col2" >1.000000</td>
+      <td id="T_2c87d_row2_col3" class="data row2 col3" >0.710000</td>
+      <td id="T_2c87d_row2_col4" class="data row2 col4" >0.690000</td>
+      <td id="T_2c87d_row2_col5" class="data row2 col5" >0.290000</td>
+    </tr>
+    <tr>
+      <th id="T_2c87d_level0_row3" class="row_heading level0 row3" >skull_w</th>
+      <td id="T_2c87d_row3_col0" class="data row3 col0" >-0.080000</td>
+      <td id="T_2c87d_row3_col1" class="data row3 col1" >0.290000</td>
+      <td id="T_2c87d_row3_col2" class="data row3 col2" >0.710000</td>
+      <td id="T_2c87d_row3_col3" class="data row3 col3" >1.000000</td>
+      <td id="T_2c87d_row3_col4" class="data row3 col4" >0.530000</td>
+      <td id="T_2c87d_row3_col5" class="data row3 col5" >0.260000</td>
+    </tr>
+    <tr>
+      <th id="T_2c87d_level0_row4" class="row_heading level0 row4" >total_l</th>
+      <td id="T_2c87d_row4_col0" class="data row4 col0" >-0.260000</td>
+      <td id="T_2c87d_row4_col1" class="data row4 col1" >0.260000</td>
+      <td id="T_2c87d_row4_col2" class="data row4 col2" >0.690000</td>
+      <td id="T_2c87d_row4_col3" class="data row4 col3" >0.530000</td>
+      <td id="T_2c87d_row4_col4" class="data row4 col4" >1.000000</td>
+      <td id="T_2c87d_row4_col5" class="data row4 col5" >0.570000</td>
+    </tr>
+    <tr>
+      <th id="T_2c87d_level0_row5" class="row_heading level0 row5" >tail_l</th>
+      <td id="T_2c87d_row5_col0" class="data row5 col0" >0.380000</td>
+      <td id="T_2c87d_row5_col1" class="data row5 col1" >0.120000</td>
+      <td id="T_2c87d_row5_col2" class="data row5 col2" >0.290000</td>
+      <td id="T_2c87d_row5_col3" class="data row5 col3" >0.260000</td>
+      <td id="T_2c87d_row5_col4" class="data row5 col4" >0.570000</td>
+      <td id="T_2c87d_row5_col5" class="data row5 col5" >1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect correlation between response and predictors</span>
+<span class="n">corr_list</span> <span class="o">=</span> <span class="n">corr</span><span class="p">[</span><span class="n">y_label</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="make-predictions">
-<h3>Make predictions<a class="headerlink" href="#make-predictions" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make predictions on the data</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="mean-squared-error">
-<h3>Mean squared error<a class="headerlink" href="#mean-squared-error" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_list</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.95832220448851
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="root-mean-squared-error">
-<h3>Root mean squared error<a class="headerlink" href="#root-mean-squared-error" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.6859707857058295
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head_l     1.00
+skull_w    0.71
+total_l    0.69
+age        0.32
+tail_l     0.29
+site      -0.16
+Name: head_l, dtype: float64
 </pre></div>
 </div>
 </div>

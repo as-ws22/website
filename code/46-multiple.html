@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Multiple linear regression &#8212; Applied Statistics</title>
+    <title>Linear regression: Verified income &#8212; Applied Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -446,8 +446,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-data">
-     Import data
+    <a class="reference internal nav-link" href="#data-import">
+     Data import
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -455,13 +455,11 @@ title="Print to PDF"
      Data structure
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-corrections">
-   Data corrections
-  </a>
-  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-corrections">
+     Data corrections
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#variable-lists">
      Variable lists
@@ -480,8 +478,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fit-model">
-     Fit model
+    <a class="reference internal nav-link" href="#fit-the-model">
+     Fit the model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -510,7 +508,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Multiple linear regression</h1>
+                <h1>Linear regression: Verified income</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -531,8 +529,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-data">
-     Import data
+    <a class="reference internal nav-link" href="#data-import">
+     Data import
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -540,13 +538,11 @@ title="Print to PDF"
      Data structure
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-corrections">
-   Data corrections
-  </a>
-  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-corrections">
+     Data corrections
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#variable-lists">
      Variable lists
@@ -565,8 +561,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fit-model">
-     Fit model
+    <a class="reference internal nav-link" href="#fit-the-model">
+     Fit the model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -596,9 +592,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="multiple-linear-regression">
-<h1>Multiple linear regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this headline">#</a></h1>
-<p>Note that we don’t use the variable “credit_checks” in our model. Therefore, the coefficients are different from the example in the lectures.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-regression-verified-income">
+<h1>Linear regression: Verified income<a class="headerlink" href="#linear-regression-verified-income" title="Permalink to this headline">#</a></h1>
 <section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -614,8 +609,8 @@ title="Print to PDF"
 </section>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
-<section id="import-data">
-<h3>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">#</a></h3>
+<section id="data-import">
+<h3>Data import<a class="headerlink" href="#data-import" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/kirenz/datasets/master/loans.csv&#39;</span><span class="p">)</span>
@@ -625,8 +620,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select columns</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;interest_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;verified_income&#39;</span><span class="p">,</span> <span class="s1">&#39;debt_to_income&#39;</span><span class="p">,</span> <span class="s1">&#39;total_credit_utilized&#39;</span><span class="p">,</span> <span class="s1">&#39;public_record_bankrupt&#39;</span><span class="p">,</span> <span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="s1">&#39;issue_month&#39;</span> <span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select relevant columns</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;interest_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;verified_income&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -661,11 +656,6 @@ title="Print to PDF"
       <th></th>
       <th>interest_rate</th>
       <th>verified_income</th>
-      <th>debt_to_income</th>
-      <th>credit_util</th>
-      <th>bankruptcy</th>
-      <th>term</th>
-      <th>issue_month</th>
     </tr>
   </thead>
   <tbody>
@@ -673,59 +663,29 @@ title="Print to PDF"
       <th>0</th>
       <td>14.07</td>
       <td>Verified</td>
-      <td>18.01</td>
-      <td>38767</td>
-      <td>0</td>
-      <td>60</td>
-      <td>Mar-2018</td>
     </tr>
     <tr>
       <th>1</th>
       <td>12.61</td>
       <td>Not Verified</td>
-      <td>5.04</td>
-      <td>4321</td>
-      <td>1</td>
-      <td>36</td>
-      <td>Feb-2018</td>
     </tr>
     <tr>
       <th>2</th>
       <td>17.09</td>
       <td>Source Verified</td>
-      <td>21.15</td>
-      <td>16000</td>
-      <td>0</td>
-      <td>36</td>
-      <td>Feb-2018</td>
     </tr>
     <tr>
       <th>3</th>
       <td>6.72</td>
       <td>Not Verified</td>
-      <td>10.16</td>
-      <td>4997</td>
-      <td>0</td>
-      <td>36</td>
-      <td>Jan-2018</td>
     </tr>
     <tr>
       <th>4</th>
       <td>14.07</td>
       <td>Verified</td>
-      <td>57.96</td>
-      <td>52722</td>
-      <td>0</td>
-      <td>36</td>
-      <td>Mar-2018</td>
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
     </tr>
@@ -733,55 +693,30 @@ title="Print to PDF"
       <th>9995</th>
       <td>7.35</td>
       <td>Source Verified</td>
-      <td>22.28</td>
-      <td>77963</td>
-      <td>1</td>
-      <td>36</td>
-      <td>Jan-2018</td>
     </tr>
     <tr>
       <th>9996</th>
       <td>19.03</td>
       <td>Verified</td>
-      <td>32.38</td>
-      <td>101571</td>
-      <td>0</td>
-      <td>36</td>
-      <td>Feb-2018</td>
     </tr>
     <tr>
       <th>9997</th>
       <td>23.88</td>
       <td>Verified</td>
-      <td>45.26</td>
-      <td>95421</td>
-      <td>0</td>
-      <td>36</td>
-      <td>Feb-2018</td>
     </tr>
     <tr>
       <th>9998</th>
       <td>5.32</td>
       <td>Source Verified</td>
-      <td>11.99</td>
-      <td>27641</td>
-      <td>0</td>
-      <td>36</td>
-      <td>Feb-2018</td>
     </tr>
     <tr>
       <th>9999</th>
       <td>10.91</td>
       <td>Not Verified</td>
-      <td>20.82</td>
-      <td>53413</td>
-      <td>0</td>
-      <td>36</td>
-      <td>Feb-2018</td>
     </tr>
   </tbody>
 </table>
-<p>10000 rows × 7 columns</p>
+<p>10000 rows × 2 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -793,39 +728,46 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 10000 entries, 0 to 9999
-Data columns (total 7 columns):
+Data columns (total 2 columns):
  #   Column           Non-Null Count  Dtype  
 ---  ------           --------------  -----  
  0   interest_rate    10000 non-null  float64
  1   verified_income  10000 non-null  object 
- 2   debt_to_income   9976 non-null   float64
- 3   credit_util      10000 non-null  int64  
- 4   bankruptcy       10000 non-null  int64  
- 5   term             10000 non-null  int64  
- 6   issue_month      10000 non-null  object 
-dtypes: float64(2), int64(3), object(2)
-memory usage: 547.0+ KB
+dtypes: float64(1), object(1)
+memory usage: 156.4+ KB
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="data-corrections">
-<h2>Data corrections<a class="headerlink" href="#data-corrections" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;total_credit_utilized&#39;</span> <span class="p">:</span> <span class="s1">&#39;credit_util&#39;</span><span class="p">,</span> <span class="s1">&#39;public_record_bankrupt&#39;</span><span class="p">:</span> <span class="s1">&#39;bankruptcy&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<h3>Data corrections<a class="headerlink" href="#data-corrections" title="Permalink to this headline">#</a></h3>
 <p>Prepare data for scikit-learn model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;verified_income&#39;</span><span class="p">,</span> <span class="s1">&#39;issue&#39;</span><span class="p">])</span>
-
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;verified_income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Source Verified    4116
+Not Verified       3594
+Verified           2290
+Name: verified_income, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -849,29 +791,15 @@ memory usage: 547.0+ KB
     <tr style="text-align: right;">
       <th></th>
       <th>interest_rate</th>
-      <th>debt_to_income</th>
-      <th>credit_util</th>
-      <th>bankruptcy</th>
-      <th>term</th>
       <th>verified_income_Not Verified</th>
       <th>verified_income_Source Verified</th>
       <th>verified_income_Verified</th>
-      <th>issue_Feb-2018</th>
-      <th>issue_Jan-2018</th>
-      <th>issue_Mar-2018</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>14.07</td>
-      <td>18.01</td>
-      <td>38767</td>
-      <td>0</td>
-      <td>60</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
@@ -879,13 +807,6 @@ memory usage: 547.0+ KB
     <tr>
       <th>1</th>
       <td>12.61</td>
-      <td>5.04</td>
-      <td>4321</td>
-      <td>1</td>
-      <td>36</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -893,41 +814,20 @@ memory usage: 547.0+ KB
     <tr>
       <th>2</th>
       <td>17.09</td>
-      <td>21.15</td>
-      <td>16000</td>
-      <td>0</td>
-      <td>36</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>6.72</td>
-      <td>10.16</td>
-      <td>4997</td>
-      <td>0</td>
-      <td>36</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>14.07</td>
-      <td>57.96</td>
-      <td>52722</td>
-      <td>0</td>
-      <td>36</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
@@ -938,24 +838,10 @@ memory usage: 547.0+ KB
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
       <th>9995</th>
       <td>7.35</td>
-      <td>22.28</td>
-      <td>77963</td>
-      <td>1</td>
-      <td>36</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
       <td>0</td>
       <td>1</td>
       <td>0</td>
@@ -963,72 +849,37 @@ memory usage: 547.0+ KB
     <tr>
       <th>9996</th>
       <td>19.03</td>
-      <td>32.38</td>
-      <td>101571</td>
-      <td>0</td>
-      <td>36</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>9997</th>
       <td>23.88</td>
-      <td>45.26</td>
-      <td>95421</td>
-      <td>0</td>
-      <td>36</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>9998</th>
       <td>5.32</td>
-      <td>11.99</td>
-      <td>27641</td>
-      <td>0</td>
-      <td>36</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>9999</th>
       <td>10.91</td>
-      <td>20.82</td>
-      <td>53413</td>
-      <td>0</td>
-      <td>36</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>10000 rows × 11 columns</p>
+<p>10000 rows × 4 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop missing values (see debt_to_income)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 <section id="variable-lists">
 <h3>Variable lists<a class="headerlink" href="#variable-lists" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
@@ -1036,17 +887,7 @@ memory usage: 547.0+ KB
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare the data</span>
 <span class="n">y_label</span> <span class="o">=</span> <span class="s2">&quot;interest_rate&quot;</span>
 
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;verified_income_Source Verified&quot;</span><span class="p">,</span> 
-            <span class="s2">&quot;verified_income_Verified&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;debt_to_income&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;credit_util&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;bankruptcy&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;term&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;issue_Jan-2018&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;issue_Mar-2018&quot;</span>
-            <span class="p">]</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;verified_income_Source Verified&quot;</span><span class="p">,</span> <span class="s2">&quot;verified_income_Verified&quot;</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">y_label</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1066,11 +907,11 @@ memory usage: 547.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-3 {color: black;background-color: white;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
 </div>
 </section>
-<section id="fit-model">
-<h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this headline">#</a></h3>
+<section id="fit-the-model">
+<h3>Fit the model<a class="headerlink" href="#fit-the-model" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit the model to the data</span>
@@ -1082,211 +923,19 @@ memory usage: 547.0+ KB
 </section>
 <section id="coefficients">
 <h3>Coefficients<a class="headerlink" href="#coefficients" title="Permalink to this headline">#</a></h3>
-<p>We create a pandas dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Intercept </span>
-<span class="n">intercept</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Intercept&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Coefficient&quot;</span><span class="p">:[</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">]}</span>
-    <span class="p">)</span>
-<span class="n">intercept</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Intercept</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Intercept: </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s1">.4</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> Slope: </span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="si">:}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Coefficient</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Intercept</td>
-      <td>4.254818</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Slope coefficients</span>
-<span class="n">slope</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="n">features</span><span class="p">,</span>
-    <span class="s2">&quot;Coefficient&quot;</span><span class="p">:</span> <span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">}</span>
-<span class="p">)</span>
-<span class="n">slope</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Intercept: 11.1 
+ Slope: [1.41602119 3.2542893 ]
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Coefficient</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>verified_income_Source Verified</td>
-      <td>1.175864</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>verified_income_Verified</td>
-      <td>2.580503</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>debt_to_income</td>
-      <td>0.037640</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>credit_util</td>
-      <td>-0.000003</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>bankruptcy</td>
-      <td>0.614840</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>term</td>
-      <td>0.149919</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>issue_Jan-2018</td>
-      <td>-0.015715</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>issue_Mar-2018</td>
-      <td>-0.096337</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># combine dataframes</span>
-<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">round</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Coefficient</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Intercept</td>
-      <td>4.255</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>verified_income_Source Verified</td>
-      <td>1.176</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>verified_income_Verified</td>
-      <td>2.581</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>debt_to_income</td>
-      <td>0.038</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>credit_util</td>
-      <td>-0.000</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>bankruptcy</td>
-      <td>0.615</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>term</td>
-      <td>0.150</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>issue_Jan-2018</td>
-      <td>-0.016</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>issue_Mar-2018</td>
-      <td>-0.096</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="make-predictions">
@@ -1304,12 +953,12 @@ memory usage: 547.0+ KB
 <h3>Mean squared error<a class="headerlink" href="#mean-squared-error" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.403
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.521802665220562
 </pre></div>
 </div>
 </div>
