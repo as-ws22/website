@@ -27,7 +27,7 @@ Data science with Python (Nr. 93): [Jupyter Book](https://kirenz.github.io/ds-py
 
 [Streamlit Dashboard (Nr. 94)](https://github.com/kirenz/streamlit-app)
 
-
+[Time Series Analysis (Nr. 95)](https://github.com/kirenz/time-series-analysis)
 
 
 ---
