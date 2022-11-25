@@ -102,3 +102,4 @@ This overview will be updated as the semester progresses.
 |	Models	|	4	|	92	|	Bonus	|	Data science project housing	|	[📚](https://e-learning.hdm-stuttgart.de/moodle/pluginfile.php/430095/mod_resource/content/0/Hands%20on%20Machine%20Learning%2C%20project.pdf)	|		|		|		|
 |	Models	|	4	|	93	|	Bonus	|	Data science with Python	|	[📚](https://kirenz.github.io/ds-python/docs/intro.html)	|		|		|		|
 |	Dashboard	|	4	|	94	|	Bonus	|	Streamlit Dashboard	|		|		|		|		|
+|	Time Series	|	4	|	95	|	Bonus	|	Times Series Analysis	|		|		|		|		|
