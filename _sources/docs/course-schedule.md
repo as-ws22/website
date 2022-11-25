@@ -30,7 +30,7 @@ This overview will be updated as the semester progresses.
 |	EDA: numerical data	|	2	|	20	|	CW 49	|	Dot plot, mean, median and mode	|	[📚](https://openintro-ims.netlify.app/explore-numerical.html#dotplots)	|		|		|	1	|
 |	EDA: numerical data	|	2	|	21	|	CW 49	|	Histogram 	|	[📚](https://openintro-ims.netlify.app/explore-numerical.html#histograms)	|		|		|	1	|
 |	EDA: numerical data	|	2	|	22	|	CW 49	|	Variance and standard deviation	|	[📚](https://openintro-ims.netlify.app/explore-numerical.html#histograms)	|		|		|	1	|
-|	EDA: numerical data	|	2	|	23	|	CW 49	|	Box Plot	|	[📚](https://openintro-ims.netlify.app/explore-numerical.html#boxplots)	|		|		|		|
+|	EDA: numerical data	|	2	|	23	|	CW 49	|	Box Plot	|	[📚](https://openintro-ims.netlify.app/explore-numerical.html#boxplots)	|		|		|	1	|
 |	EDA: numerical data	|	2	|	24	|	CW 49	|	Robust statistics and transformations	|	[📚](https://openintro-ims.netlify.app/explore-numerical.html#robust-statistics)	|		|		|	1	|
 |	EDA: numerical + categorical	|	2	|	25	|	CW 49	|	Comparing numerical data across groups	|	[📚](https://openintro-ims.netlify.app/explore-categorical.html#comparing-numerical-data-across-groups)	|		|		|		|
 |	EDA: maps	|	2	|	26	|	CW 49	|	Mapping data	|	[📚](https://openintro-ims.netlify.app/explore-numerical.html#mapping-data)	|		|		|		|
@@ -101,3 +101,4 @@ This overview will be updated as the semester progresses.
 |	Probability & Bayes	|	8	|	91	|	CW 3	|	Probability and Bayes	|	[📺](https://www.youtube.com/watch?v=HZGCoVF3YvM)	|		|		|		|
 |	Models	|	4	|	92	|	Bonus	|	Data science project housing	|	[📚](https://e-learning.hdm-stuttgart.de/moodle/pluginfile.php/430095/mod_resource/content/0/Hands%20on%20Machine%20Learning%2C%20project.pdf)	|		|		|		|
 |	Models	|	4	|	93	|	Bonus	|	Data science with Python	|	[📚](https://kirenz.github.io/ds-python/docs/intro.html)	|		|		|		|
+|	Dashboard	|	4	|	94	|	Bonus	|	Streamlit Dashboard	|		|		|		|		|
