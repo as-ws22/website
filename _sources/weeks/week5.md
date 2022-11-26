@@ -15,8 +15,6 @@ Optional: Take a look at my Jupyter Book [Feature Engineering and Selection](htt
 
 Adjusted R squared (Nr. 50): [📚](https://openintro-ims.netlify.app/model-mlr.html#adjusted-r-squared)
 
-Regression diagnostics (Nr. 51): [📚](https://mlu-explain.github.io/linear-regression/)
-
 Model selection methods (Nr. 52): [📚](http://www.feat.engineering/selection.html)
 
 Model selection: Implicit (Lasso) (Nr. 53): [📚](https://www.statlearning.com/)
