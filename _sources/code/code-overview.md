@@ -58,7 +58,7 @@ Code 28. to 31. are application exercises
 
 ## Week 5
 
-- [51. Regression diagnostics](../code/51-diagnostics-c.ipynb)
+- [51. Regression diagnostics](../code/51-diagnostics.ipynb)
 - [53. Model selection: Implicit (Lasso)](../code/53-implicit.ipynb)
 - [54. Lasso regression](../code/54-lasso-c.ipynb)
 - [55. Model selection: Filter](../code/55-filter.ipynb)
