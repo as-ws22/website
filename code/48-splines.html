@@ -232,6 +232,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/reference.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -620,10 +632,10 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="regression-splines">
 <h1>Regression splines<a class="headerlink" href="#regression-splines" title="Permalink to this headline">#</a></h1>
-<p><em>The following code tutorial is mainly based on the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_polynomial_interpolation.html#sphx-glr-auto-examples-linear-model-plot-polynomial-interpolation-py">scikit learn documentation</a> about splines provided by Mathieu Blondel, Jake Vanderplas, Christian Lorentzen and Malte Londschien and code from <a class="reference external" href="https://nbviewer.org/github/JWarmenhoven/ISL-python/blob/master/Notebooks/Chapter%207.ipynb">Jordi Warmenhoven</a></em>. To learn more about the spline regression method, review <a class="reference external" href="https://www.statlearning.com/">“An Introduction to Statistical Learning”</a> from <span id="id1">[]</span>.</p>
+<p><em>The following code tutorial is mainly based on the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_polynomial_interpolation.html#sphx-glr-auto-examples-linear-model-plot-polynomial-interpolation-py">scikit learn documentation</a> about splines provided by Mathieu Blondel, Jake Vanderplas, Christian Lorentzen and Malte Londschien and code from <a class="reference external" href="https://nbviewer.org/github/JWarmenhoven/ISL-python/blob/master/Notebooks/Chapter%207.ipynb">Jordi Warmenhoven</a></em>. To learn more about the spline regression method, review <a class="reference external" href="https://www.statlearning.com/">“An Introduction to Statistical Learning”</a> from <span id="id1">[<a class="reference internal" href="../docs/reference.html#id6" title="Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical learning. Springer, 2021. URL: https://www.statlearning.com/.">James <em>et al.</em>, 2021</a>]</span>.</p>
 <ul class="simple">
 <li><p>Regression splines involve dividing the range of a feature X into K distinct regions (by using so called knots). Within each region, a polynomial function (also called a Basis Spline or B-splines) is fit to the data.</p></li>
-<li><p>In the following example, various piecewise polynomials are fit to the data, with one knot at age=50 <span id="id2">[]</span>:</p></li>
+<li><p>In the following example, various piecewise polynomials are fit to the data, with one knot at age=50 <span id="id2">[<a class="reference internal" href="../docs/reference.html#id6" title="Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical learning. Springer, 2021. URL: https://www.statlearning.com/.">James <em>et al.</em>, 2021</a>]</span>:</p></li>
 </ul>
 <p><img alt="" src="_static/img/splines.png" /></p>
 <p>Figures:</p>
@@ -636,7 +648,7 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <ul class="simple">
 <li><p>The polynomials are ususally constrained so that they join smoothly at the region boundaries, or knots.</p></li>
-<li><p>Provided that the interval is divided into enough regions, this can produce an extremely flexibel fit <span id="id3">[]</span>:</p></li>
+<li><p>Provided that the interval is divided into enough regions, this can produce an extremely flexibel fit <span id="id3">[<a class="reference internal" href="../docs/reference.html#id6" title="Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical learning. Springer, 2021. URL: https://www.statlearning.com/.">James <em>et al.</em>, 2021</a>]</span>:</p></li>
 </ul>
 <p><img alt="" src="_static/img/splines-2.png" /></p>
 <p>Figure: A cubic spline and a natural cubic spline, with three knots. The dashed lines denote the knot locations.</p>
