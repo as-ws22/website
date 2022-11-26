@@ -58,7 +58,7 @@ This overview will be updated as the semester progresses.
 |	Models	|	4	|	48	|	CW 51	|	Regression splines	|	[📚](https://www.statlearning.com/)	|		|		|		|
 |	Models	|	4	|	49	|	CW 51	|	Generalized additive models	|	[📚](https://www.statlearning.com/)	|		|		|		|
 |	Model selection	|	5	|	50	|	CW 52	|	Adjusted R squared	|	[📚](https://openintro-ims.netlify.app/model-mlr.html#adjusted-r-squared)	|		|		|		|
-|	Model selection	|	5	|	51	|	CW 52	|	Regression diagnostics	|	[📚](https://mlu-explain.github.io/linear-regression/)	|		|		|		|
+|	Model selection	|	5	|	51	|	CW 52	|	Regression diagnostics (optional)	|	[📚](https://mlu-explain.github.io/linear-regression/)	|		|		|		|
 |	Model selection	|	5	|	52	|	CW 52	|	Model selection methods	|	[📚](http://www.feat.engineering/selection.html)	|		|		|		|
 |	Model selection	|	5	|	53	|	CW 52	|	Implivit model selection	|	[📚](https://www.statlearning.com/)	|		|		|		|
 |	Model selection	|	5	|	54	|	CW 52	|	Lasso regression	|	[📚](https://www.statlearning.com/)	|		|		|		|
