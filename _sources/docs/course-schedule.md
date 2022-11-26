@@ -99,7 +99,8 @@ This overview will be updated as the semester progresses.
 |	Inferential modeling	|	8	|	89	|	CW 3	|	Inference regression bootsrapping	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#bootbeta1)	|		|		|		|
 |	Inferential modeling	|	8	|	90	|	CW 3	|	Inference regression mathematical	|	[📚](https://openintro-ims.netlify.app/inf-model-slr.html#mathematical-model-interval-for-the-slope)	|		|		|		|
 |	Probability & Bayes	|	8	|	91	|	CW 3	|	Probability and Bayes	|	[📺](https://www.youtube.com/watch?v=HZGCoVF3YvM)	|		|		|		|
-|	Models	|	4	|	92	|	Bonus	|	Data science project housing	|	[📚](https://e-learning.hdm-stuttgart.de/moodle/pluginfile.php/430095/mod_resource/content/0/Hands%20on%20Machine%20Learning%2C%20project.pdf)	|		|		|		|
-|	Models	|	4	|	93	|	Bonus	|	Data science with Python	|	[📚](https://kirenz.github.io/ds-python/docs/intro.html)	|		|		|		|
-|	Dashboard	|	4	|	94	|	Bonus	|	Streamlit Dashboard	|		|		|		|		|
-|	Time Series	|	4	|	95	|	Bonus	|	Times Series Analysis	|		|		|		|		|
+|	Models	|		|	92	|	Bonus	|	Data science project housing	|	[📚](https://e-learning.hdm-stuttgart.de/moodle/pluginfile.php/430095/mod_resource/content/0/Hands%20on%20Machine%20Learning%2C%20project.pdf)	|		|		|		|
+|	Models	|		|	93	|	Bonus	|	Data science with Python	|	[📚](https://kirenz.github.io/ds-python/docs/intro.html)	|		|		|		|
+|	Reporting	|		|	94	|	Bonus	|	Reporting with Quarto	|	[📚](https://quarto.org/)	|		|		|		|
+|	Dashboard	|		|	95	|	Bonus	|	Streamlit Dashboard	|	[📚](https://github.com/kirenz/streamlit-app)	|		|		|		|
+|	Time Series	|		|	96	|	Bonus	|	Times Series Analysis	|	[📚](https://github.com/kirenz/time-series-analysis)	|		|		|		|

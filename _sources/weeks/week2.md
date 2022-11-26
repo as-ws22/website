@@ -6,6 +6,10 @@
 (prepare)=
 ## Prepare
 
+```{note}
+The website ["From Data to Viz"](https://www.data-to-viz.com/) helps you find the appropriate visualization
+```
+
 Introduction to Altair (Nr. 11): [📚](https://uwdata.github.io/visualization-curriculum/altair_introduction.html)
 
 Loans data (Nr. 12): [📚](https://openintro-ims.netlify.app/explore-categorical.html#explore-categorical)
