@@ -32,3 +32,6 @@ parts:
     - file: weeks/week7.md
     - file: weeks/week8.md
     - file: weeks/week9.md
+  - caption: References
+    chapters:
+    - file: docs/reference.md
