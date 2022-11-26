@@ -22,11 +22,6 @@
 
 The goal of the project is for you to use analytical methods to analyze a data set of your own choosing 
 
-
-```{Note}
-Teams of two students have to use a regression model; teams of three students need to use a regression model as well as a classification model.
-```
-
 Choose the data based on your group's interests or work you all have done in other courses or research projects.
 The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like) and apply them to a data set to analyze it in a meaningful way.
 
