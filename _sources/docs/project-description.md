@@ -5,10 +5,10 @@
 
 | Topic                 | Deadline      | GitHub folder & hints |
 | ---                   | ---           |  ---                  |
-|[](topic-ideas)        | We, Nov 30    | references/           |
-|[](project-proposal)   | We, Dec 7     | references/           |
-|[](draft-analysis)     | Fr, Dec 16    | notebooks/            |
-|[](peer-review-draft)  | We, Dec 21    | use [](issue-template)|
+|[](topic-ideas)        | We, Dec 7    | references/           |
+|[](project-proposal)   | We, Dec 12     | references/           |
+|[](draft-analysis)     | Mo, Dec 19    | notebooks/            |
+|[](peer-review-draft)  | Tue, Dec 22    | use [](issue-template)|
 |[](report)             | Fr, Jan 13    | reports/              |
 |[](slides-video)       | Fri, Jan 13   | reports/              |
 |[](github-repo)        | Fri, Jan 13   | "Repo in final state" |
