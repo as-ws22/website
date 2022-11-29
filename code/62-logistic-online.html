@@ -713,13 +713,13 @@ title="Print to PDF"
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+import altair as alt
+import seaborn as sns
 
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegressionCV</span>
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegressionCV
 </pre></div>
 </div>
 </div>
@@ -731,7 +731,7 @@ title="Print to PDF"
 <h3>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/kirenz/datasets/master/purchase.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(&quot;https://raw.githubusercontent.com/kirenz/datasets/master/purchase.csv&quot;)
 </pre></div>
 </div>
 </div>
@@ -741,7 +741,7 @@ title="Print to PDF"
 <h3>Data structure<a class="headerlink" href="#data-structure" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df
 </pre></div>
 </div>
 </div>
@@ -879,7 +879,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.info()
 </pre></div>
 </div>
 </div>
@@ -903,8 +903,8 @@ memory usage: 18.9+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect outcome variable</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Purchased&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># inspect outcome variable
+df[&#39;Purchased&#39;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -921,14 +921,14 @@ Name: Purchased, dtype: int64
 <h3>Data corrections<a class="headerlink" href="#data-corrections" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change data format</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Purchased&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Purchased&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># change data format
+df[&#39;Purchased&#39;] = df[&#39;Purchased&#39;].astype(&#39;category&#39;)
 
-<span class="c1"># make dummy variable</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">],</span> <span class="n">drop_first</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+# make dummy variable
+df[&#39;male&#39;] = pd.get_dummies(df[&#39;Gender&#39;], drop_first = True)
 
-<span class="c1"># drop irrelevant columns</span>
-<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;User ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+# drop irrelevant columns
+df.drop(columns= [&#39;Unnamed: 0&#39;, &#39;User ID&#39;, &#39;Gender&#39;], inplace = True)
 </pre></div>
 </div>
 </div>
@@ -938,11 +938,11 @@ Name: Purchased, dtype: int64
 <h3>Variable lists<a class="headerlink" href="#variable-lists" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prepare data for scikit learn </span>
-<span class="n">y_label</span> <span class="o">=</span> <span class="s1">&#39;Purchased&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># prepare data for scikit learn 
+y_label = &#39;Purchased&#39;
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">y_label</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">y_label</span><span class="p">]</span>
+X = df.drop(columns=[y_label])
+y = df[y_label]
 </pre></div>
 </div>
 </div>
@@ -952,8 +952,8 @@ Name: Purchased, dtype: int64
 <h3>Data split<a class="headerlink" href="#data-split" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make data split</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># make data split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state = 1)
 </pre></div>
 </div>
 </div>
@@ -963,11 +963,11 @@ Name: Purchased, dtype: int64
 <h3>Data exploration set<a class="headerlink" href="#data-exploration-set" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create new training dataset for data exploration</span>
-<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;Purchased&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create new training dataset for data exploration
+df_train = pd.DataFrame(X_train).copy()
+df_train[&#39;Purchased&#39;] = pd.DataFrame(y_train)
 
-<span class="n">df_train</span>
+df_train
 </pre></div>
 </div>
 </div>
@@ -1085,7 +1085,7 @@ Name: Purchased, dtype: int64
 <h2>Analyze data<a class="headerlink" href="#analyze-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Purchased&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_train.groupby(by=[&#39;Purchased&#39;]).describe().T
 </pre></div>
 </div>
 </div>
@@ -1245,17 +1245,17 @@ Name: Purchased, dtype: int64
 <p>Visualization of differences:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s2">&quot;column&quot;</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;quantitative&#39;</span><span class="p">),</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s2">&quot;row&quot;</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;quantitative&#39;</span><span class="p">),</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;Purchased:N&#39;</span><span class="p">),</span>
-<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
-    <span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">150</span>
-<span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
-    <span class="n">row</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;EstimatedSalary&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">],</span>
-    <span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;EstimatedSalary&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">]</span>
-<span class="p">)</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>alt.Chart(df_train).mark_circle().encode(
+    alt.X(alt.repeat(&quot;column&quot;), type=&#39;quantitative&#39;),
+    alt.Y(alt.repeat(&quot;row&quot;), type=&#39;quantitative&#39;),
+    alt.Color(&#39;Purchased:N&#39;),
+).properties(
+    width=150,
+    height=150
+).repeat(
+    row=[&#39;Age&#39;, &#39;EstimatedSalary&#39;, &#39;male&#39;],
+    column=[&#39;Age&#39;, &#39;EstimatedSalary&#39;, &#39;male&#39;]
+).interactive()
 </pre></div>
 </div>
 </div>
@@ -1319,7 +1319,7 @@ Name: Purchased, dtype: int64
 <p>Code for seaborn:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Purchased&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.pairplot(hue=&#39;Purchased&#39;, kind=&quot;reg&quot;, diag_kind=&quot;kde&quot;, data=df_train);
 </pre></div>
 </div>
 </div>
@@ -1330,7 +1330,7 @@ Name: Purchased, dtype: int64
 <p>Inspect (linear) relationships between variables with correlation (pearson’s correlation coefficient)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.corr().round(2)
 </pre></div>
 </div>
 </div>
@@ -1383,14 +1383,14 @@ Name: Purchased, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span><span class="o">.</span><span class="n">mark_area</span><span class="p">(</span>
-    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">interpolate</span><span class="o">=</span><span class="s1">&#39;step&#39;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;Age:Q&quot;</span><span class="p">,</span> <span class="nb">bin</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="n">maxbins</span><span class="o">=</span><span class="mi">20</span><span class="p">)),</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;count()&#39;</span><span class="p">,</span> <span class="n">stack</span> <span class="o">=</span> <span class="kc">None</span><span class="p">),</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;Purchased:N&#39;</span><span class="p">),</span>
-<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>alt.Chart(df_train).mark_area(
+    opacity=0.5,
+    interpolate=&#39;step&#39;
+).encode(
+    alt.X(&quot;Age:Q&quot;, bin=alt.Bin(maxbins=20)),
+    alt.Y(&#39;count()&#39;, stack = None),
+    alt.Color(&#39;Purchased:N&#39;),
+).properties(width=300)
 </pre></div>
 </div>
 </div>
@@ -1454,7 +1454,7 @@ Name: Purchased, dtype: int64
 <p>Code for seaborn:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Purchased&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.histplot(hue=&quot;Purchased&quot;, x=&#39;Age&#39;, data=df_train);
 </pre></div>
 </div>
 </div>
@@ -1465,14 +1465,14 @@ Name: Purchased, dtype: int64
 <p>Purchasers seem to be _________ than non-purchaser.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span><span class="o">.</span><span class="n">mark_boxplot</span><span class="p">(</span>
-    <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
-    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span>
-<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;male:N&#39;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;Age:Q&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>  
-    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Purchased:N&#39;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>alt.Chart(df_train).mark_boxplot(
+    size=50,
+    opacity=0.7
+).encode(
+    x=&#39;male:N&#39;,
+    y=alt.Y(&#39;Age:Q&#39;, scale=alt.Scale(zero=True)),  
+    color=&#39;Purchased:N&#39;
+).properties(width=300)
 </pre></div>
 </div>
 </div>
@@ -1536,7 +1536,7 @@ Name: Purchased, dtype: int64
 <p>Code for seaborn</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Purchased&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.boxplot(x=&quot;male&quot;, y=&quot;Age&quot;, hue=&quot;Purchased&quot;, data=df_train);
 </pre></div>
 </div>
 </div>
@@ -1547,14 +1547,14 @@ Name: Purchased, dtype: int64
 <p>There are __________ differences regarding gender.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span><span class="o">.</span><span class="n">mark_area</span><span class="p">(</span>
-    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">interpolate</span><span class="o">=</span><span class="s1">&#39;step&#39;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;EstimatedSalary:Q&quot;</span><span class="p">,</span> <span class="nb">bin</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="n">maxbins</span><span class="o">=</span><span class="mi">20</span><span class="p">)),</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;count()&#39;</span><span class="p">,</span> <span class="n">stack</span> <span class="o">=</span> <span class="kc">None</span><span class="p">),</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;Purchased:N&#39;</span><span class="p">),</span>
-<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>alt.Chart(df_train).mark_area(
+    opacity=0.5,
+    interpolate=&#39;step&#39;
+).encode(
+    alt.X(&quot;EstimatedSalary:Q&quot;, bin=alt.Bin(maxbins=20)),
+    alt.Y(&#39;count()&#39;, stack = None),
+    alt.Color(&#39;Purchased:N&#39;),
+).properties(width=300)
 </pre></div>
 </div>
 </div>
@@ -1618,7 +1618,7 @@ Name: Purchased, dtype: int64
 <p>Code for seaborn</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Purchased&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;EstimatedSalary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">);</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.histplot(hue=&quot;Purchased&quot;, x=&#39;EstimatedSalary&#39;, data=df_train); 
 </pre></div>
 </div>
 </div>
@@ -1629,14 +1629,14 @@ Name: Purchased, dtype: int64
 <p>Purchaser earn a ______________ estimated salary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span><span class="o">.</span><span class="n">mark_boxplot</span><span class="p">(</span>
-    <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
-    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span>
-<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;male:N&#39;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;EstimatedSalary:Q&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>  
-    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Purchased:N&#39;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>alt.Chart(df_train).mark_boxplot(
+    size=50,
+    opacity=0.7
+).encode(
+    x=&#39;male:N&#39;,
+    y=alt.Y(&#39;EstimatedSalary:Q&#39;, scale=alt.Scale(zero=True)),  
+    color=&#39;Purchased:N&#39;
+).properties(width=300)
 </pre></div>
 </div>
 </div>
@@ -1700,7 +1700,7 @@ Name: Purchased, dtype: int64
 <p>Code for seaborn</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;EstimatedSalary&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Purchased&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.boxplot(x=&quot;male&quot;, y=&quot;EstimatedSalary&quot;, hue=&quot;Purchased&quot;, data=df_train);
 </pre></div>
 </div>
 </div>
@@ -1713,12 +1713,12 @@ Name: Purchased, dtype: int64
 <h3>Select features<a class="headerlink" href="#select-features" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># only select meaningful predictors</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># only select meaningful predictors
 
-<span class="n">features_model</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;EstimatedSalary&#39;</span><span class="p">]</span>
+features_model = [&#39;Age&#39;, &#39;EstimatedSalary&#39;]
 
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">features_model</span><span class="p">]</span> 
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">features_model</span><span class="p">]</span>
+X_train = X_train[features_model] 
+X_test = X_test[features_model]
 </pre></div>
 </div>
 </div>
@@ -1733,8 +1733,8 @@ Name: Purchased, dtype: int64
 <p>We only use our most promising predictor variables <code class="docutils literal notranslate"><span class="pre">Age</span></code> and <code class="docutils literal notranslate"><span class="pre">EstimatedSalary</span></code> for our model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># model</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegressionCV</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># model
+clf = LogisticRegressionCV()
 </pre></div>
 </div>
 </div>
@@ -1744,8 +1744,8 @@ Name: Purchased, dtype: int64
 <h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fit model to data</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># fit model to data
+clf.fit(X_train, y_train)
 </pre></div>
 </div>
 </div>
@@ -1757,7 +1757,7 @@ Name: Purchased, dtype: int64
 <h3>Coefficients<a class="headerlink" href="#coefficients" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf.intercept_
 </pre></div>
 </div>
 </div>
@@ -1769,7 +1769,7 @@ Name: Purchased, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf.coef_
 </pre></div>
 </div>
 </div>
@@ -1785,8 +1785,8 @@ Name: Purchased, dtype: int64
 <h2>Classification metrics<a class="headerlink" href="#classification-metrics" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Return the mean accuracy on the given test data and labels:</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Return the mean accuracy on the given test data and labels:
+clf.score(X_test, y_test)
 </pre></div>
 </div>
 </div>
@@ -1798,9 +1798,9 @@ Name: Purchased, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import ConfusionMatrixDisplay
 
-<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">);</span>
+ConfusionMatrixDisplay.from_estimator(clf, X_test, y_test);
 </pre></div>
 </div>
 </div>
@@ -1810,11 +1810,11 @@ Name: Purchased, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import classification_report
 
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+y_pred = clf.predict(X_test)
 
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="s1">&#39;Yes&#39;</span><span class="p">]))</span>
+print(classification_report(y_test, y_pred, target_names=[&#39;No&#39;, &#39;Yes&#39;]))
 </pre></div>
 </div>
 </div>
@@ -1837,9 +1837,9 @@ weighted avg       0.79      0.78      0.78       120
 <h3>ROC Curve<a class="headerlink" href="#roc-curve" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">RocCurveDisplay</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import RocCurveDisplay
 
-<span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="p">;</span>
+RocCurveDisplay.from_estimator(clf, X_test, y_test) ;
 </pre></div>
 </div>
 </div>
@@ -1852,10 +1852,10 @@ weighted avg       0.79      0.78      0.78       120
 <h3>AUC Score<a class="headerlink" href="#auc-score" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import roc_auc_score
 
-<span class="n">y_score</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
+y_score = clf.predict_proba(X_test)[:, 1]
+roc_auc_score(y_test, y_score)
 </pre></div>
 </div>
 </div>
@@ -1872,7 +1872,7 @@ weighted avg       0.79      0.78      0.78       120
 <p>We use three different thresholds. Which threshold would you recommend if we want to maximize our F1-Score?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_proba</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pred_proba = clf.predict_proba(X_test)
 </pre></div>
 </div>
 </div>
@@ -1881,11 +1881,11 @@ weighted avg       0.79      0.78      0.78       120
 <h3>Threshold  0.4<a class="headerlink" href="#threshold-0-4" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_04</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;y_pred&#39;</span><span class="p">:</span> <span class="n">pred_proba</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">.4</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_04 = pd.DataFrame({&#39;y_pred&#39;: pred_proba[:,1] &gt; .4})
 
-<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">df_04</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]);</span>
+ConfusionMatrixDisplay.from_predictions(y_test, df_04[&#39;y_pred&#39;]);
 
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">df_04</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]))</span>
+print(classification_report(y_test, df_04[&#39;y_pred&#39;]))
 </pre></div>
 </div>
 </div>
@@ -1908,11 +1908,11 @@ weighted avg       0.79      0.78      0.78       120
 <h3>Threshold 0.5<a class="headerlink" href="#threshold-0-5" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_05</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;y_pred&#39;</span><span class="p">:</span> <span class="n">pred_proba</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">.5</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_05 = pd.DataFrame({&#39;y_pred&#39;: pred_proba[:,1] &gt; .5})
 
-<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">df_05</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]);</span>
+ConfusionMatrixDisplay.from_predictions(y_test, df_05[&#39;y_pred&#39;]);
 
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">df_05</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]))</span>
+print(classification_report(y_test, df_05[&#39;y_pred&#39;]))
 </pre></div>
 </div>
 </div>
@@ -1935,11 +1935,11 @@ weighted avg       0.79      0.78      0.78       120
 <h3>Threshold 0.7<a class="headerlink" href="#threshold-0-7" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_07</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;y_pred&#39;</span><span class="p">:</span> <span class="n">pred_proba</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">.7</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_07 = pd.DataFrame({&#39;y_pred&#39;: pred_proba[:,1] &gt; .7})
 
-<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">df_07</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]);</span>
+ConfusionMatrixDisplay.from_predictions(y_test, df_07[&#39;y_pred&#39;]);
 
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">df_07</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]))</span>
+print(classification_report(y_test, df_07[&#39;y_pred&#39;]))
 </pre></div>
 </div>
 </div>

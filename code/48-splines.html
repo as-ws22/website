@@ -659,16 +659,16 @@ have continuous first and second derivatives.</p></li>
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+np.set_printoptions(suppress=True)
+import pandas as pd
 
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+from sklearn.model_selection import train_test_split
+from sklearn import linear_model
+from sklearn.metrics import mean_squared_error
 
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+%matplotlib inline
+import seaborn as sns 
 </pre></div>
 </div>
 </div>
@@ -678,24 +678,24 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>results = []
 
-<span class="c1"># create function to obtain model rmse</span>
-<span class="k">def</span> <span class="nf">model_results</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+# create function to obtain model rmse
+def model_results(model_name):
 
-    <span class="c1"># Training data</span>
-    <span class="n">pred_train</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-    <span class="n">rmse_train</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">pred_train</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+    # Training data
+    pred_train = reg.predict(X_train)
+    rmse_train = round(mean_squared_error(y_train, pred_train, squared=False),4)
 
-    <span class="c1"># Test data</span>
-    <span class="n">pred_test</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-    <span class="n">rmse_test</span> <span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_test</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+    # Test data
+    pred_test = reg.predict(X_test)
+    rmse_test =round(mean_squared_error(y_test, pred_test, squared=False),4)
 
-    <span class="c1"># Save model results</span>
-    <span class="n">new_results</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span> <span class="s2">&quot;rmse_train&quot;</span><span class="p">:</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="s2">&quot;rmse_test&quot;</span><span class="p">:</span> <span class="n">rmse_test</span><span class="p">}</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_results</span><span class="p">)</span>  
+    # Save model results
+    new_results = {&quot;model&quot;: model_name, &quot;rmse_train&quot;: rmse_train, &quot;rmse_test&quot;: rmse_test}
+    results.append(new_results)  
       
-    <span class="k">return</span> <span class="n">results</span><span class="p">;</span>
+    return results;
 </pre></div>
 </div>
 </div>
@@ -707,8 +707,8 @@ have continuous first and second derivatives.</p></li>
 <h3>Import<a class="headerlink" href="#import" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/kirenz/datasets/master/wage.csv&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(&#39;https://raw.githubusercontent.com/kirenz/datasets/master/wage.csv&#39;)
+df.head(3)
 </pre></div>
 </div>
 </div>
@@ -803,8 +803,8 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;wage&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = df[[&#39;age&#39;]]
+y = df[[&#39;wage&#39;]]
 </pre></div>
 </div>
 </div>
@@ -817,7 +817,7 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state = 1)
 </pre></div>
 </div>
 </div>
@@ -830,12 +830,12 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="c1"># seaborn settings</span>
-<span class="n">custom_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;axes.spines.right&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;axes.spines.top&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="n">rc</span><span class="o">=</span><span class="n">custom_params</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> # seaborn settings
+custom_params = {&quot;axes.spines.right&quot;: False, &quot;axes.spines.top&quot;: False}
+sns.set_theme(style=&quot;ticks&quot;, rc=custom_params)
 
-<span class="c1"># plot</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">);</span>
+# plot
+sns.scatterplot(x=X_train[&#39;age&#39;], y=y_train[&#39;wage&#39;], alpha=0.4);
 </pre></div>
 </div>
 </div>
@@ -853,8 +853,8 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alphas</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
-<span class="n">alphas</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>alphas=np.logspace(-6, 6, 13)
+alphas
 </pre></div>
 </div>
 </div>
@@ -872,8 +872,8 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">)</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reg = linear_model.RidgeCV(alphas=alphas)
+reg.fit(X_train,y_train)
 </pre></div>
 </div>
 </div>
@@ -891,7 +891,7 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">alpha_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reg.alpha_
 </pre></div>
 </div>
 </div>
@@ -906,8 +906,8 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(reg.coef_)
+print(reg.intercept_)
 </pre></div>
 </div>
 </div>
@@ -920,7 +920,7 @@ have continuous first and second derivatives.</p></li>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_results</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Ridge&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_results(model_name=&quot;Ridge&quot;)
 </pre></div>
 </div>
 </div>
@@ -932,10 +932,10 @@ have continuous first and second derivatives.</p></li>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> 
-            <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> 
-            <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-            <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">});</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.regplot(x=X_train[&#39;age&#39;], 
+            y=y_train[&#39;wage&#39;], 
+            ci=None, 
+            line_kws={&quot;color&quot;: &quot;orange&quot;});
 </pre></div>
 </div>
 </div>
@@ -957,16 +957,16 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import make_pipeline
 
-<span class="c1"># use polynomial features with degree 3</span>
-<span class="n">reg</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-            <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> 
-            <span class="n">linear_model</span><span class="o">.</span><span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">)</span>
-            <span class="p">)</span>
+# use polynomial features with degree 3
+reg = make_pipeline(
+            PolynomialFeatures(degree=3), 
+            linear_model.RidgeCV(alphas=alphas)
+            )
 
-<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+reg.fit(X_train, y_train)
 </pre></div>
 </div>
 </div>
@@ -983,7 +983,7 @@ have continuous first and second derivatives.</p></li>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_results</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Polynomial Reg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_results(model_name=&quot;Polynomial Reg&quot;)
 </pre></div>
 </div>
 </div>
@@ -996,12 +996,12 @@ have continuous first and second derivatives.</p></li>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> 
-            <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> 
-            <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-            <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
-            <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">});</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot
+sns.regplot(x=X_train[&#39;age&#39;], 
+            y=y_train[&#39;wage&#39;], 
+            ci=None, 
+            order=3, 
+            line_kws={&quot;color&quot;: &quot;orange&quot;});
 </pre></div>
 </div>
 </div>
@@ -1021,15 +1021,15 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">SplineTransformer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import SplineTransformer
 
-<span class="c1"># use a spline wit 4 knots and 3 degrees </span>
-<span class="c1"># we combine the spline with a ridge regressions</span>
-<span class="n">reg</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-                    <span class="n">SplineTransformer</span><span class="p">(</span><span class="n">n_knots</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> 
-                    <span class="n">linear_model</span><span class="o">.</span><span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">)</span>
-                    <span class="p">)</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+# use a spline wit 4 knots and 3 degrees 
+# we combine the spline with a ridge regressions
+reg = make_pipeline(
+                    SplineTransformer(n_knots=4, degree=3), 
+                    linear_model.RidgeCV(alphas=alphas)
+                    )
+reg.fit(X_train, y_train)
 </pre></div>
 </div>
 </div>
@@ -1046,7 +1046,7 @@ have continuous first and second derivatives.</p></li>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_results</span><span class="p">(</span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;Cubic Spline&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_results(model_name = &quot;Cubic Spline&quot;)
 </pre></div>
 </div>
 </div>
@@ -1063,11 +1063,11 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">splt</span> <span class="o">=</span> <span class="n">SplineTransformer</span><span class="p">(</span><span class="n">n_knots</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">splt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">knots</span> <span class="o">=</span> <span class="n">splt</span><span class="o">.</span><span class="n">bsplines_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">t</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>splt = SplineTransformer(n_knots=4, degree=3)
+splt.fit(X_train)
+knots = splt.bsplines_[0].t
 
-<span class="n">knots</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+knots[3:-3]
 </pre></div>
 </div>
 </div>
@@ -1079,20 +1079,20 @@ have continuous first and second derivatives.</p></li>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
 
-<span class="c1"># Create observations</span>
-<span class="n">x_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">X_test</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
-<span class="c1"># Make some predictions</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
+# Create observations
+x_new = np.linspace(X_test.min(),X_test.max(), 100)
+# Make some predictions
+pred = reg.predict(x_new)
 
-<span class="c1"># plot</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">])</span>
+# plot
+sns.scatterplot(x=X_train[&#39;age&#39;], y=y_train[&#39;wage&#39;])
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_new</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cubic spline with 4 knots and degree=3&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">knots</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+plt.plot(x_new, pred, label=&#39;Cubic spline with 4 knots and degree=3&#39;, color=&#39;orange&#39;)
+plt.vlines(knots[3:-3], ymin=0, ymax=300, linestyles=&quot;dashed&quot;)
+plt.legend();
 </pre></div>
 </div>
 </div>
@@ -1121,10 +1121,10 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_train = y_train.join(X_train)
+df_test = y_test.join(X_test)
 
-<span class="n">df_train</span>
+df_train
 </pre></div>
 </div>
 </div>
@@ -1231,10 +1231,10 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="kn">from</span> <span class="nn">statsmodels.gam.api</span> <span class="kn">import</span> <span class="n">GLMGam</span><span class="p">,</span> <span class="n">BSplines</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import statsmodels.api as sm
+from statsmodels.gam.api import GLMGam, BSplines
 
-<span class="n">bs</span> <span class="o">=</span> <span class="n">BSplines</span><span class="p">(</span><span class="n">X_train</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">]],</span> <span class="n">df</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+bs = BSplines(X_train[[&#39;age&#39;]], df=7, degree=3)
 </pre></div>
 </div>
 </div>
@@ -1250,7 +1250,7 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">GLMGam</span><span class="o">.</span><span class="n">from_formula</span><span class="p">(</span><span class="s1">&#39;wage ~ age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span> <span class="n">smoother</span><span class="o">=</span><span class="n">bs</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reg = GLMGam.from_formula(&#39;wage ~ age&#39;, data=df_train, smoother=bs).fit()
 </pre></div>
 </div>
 </div>
@@ -1260,7 +1260,7 @@ have continuous first and second derivatives.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(reg.summary())
 </pre></div>
 </div>
 </div>
@@ -1297,21 +1297,21 @@ age_s5       -53.3174     12.324     -4.326      0.000     -77.472     -29.163
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;Spline statsmodels&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_name = &quot;Spline statsmodels&quot;
 
-<span class="c1"># Training data</span>
-<span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;pred_train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
-<span class="n">rmse_train</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;pred_train&#39;</span><span class="p">],</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+# Training data
+df_train[&#39;pred_train&#39;] = reg.predict()
+rmse_train = round(mean_squared_error(df_train[&#39;wage&#39;], df_train[&#39;pred_train&#39;], squared=False),4)
 
-<span class="c1"># Test data</span>
-<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;pred_test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_test</span><span class="p">,</span> <span class="n">exog_smooth</span><span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
-<span class="n">rmse_test</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">],</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;pred_test&#39;</span><span class="p">],</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+# Test data
+df_test[&#39;pred_test&#39;] = reg.predict(df_test, exog_smooth= df_test[&#39;age&#39;])
+rmse_test = round(mean_squared_error(df_test[&#39;wage&#39;], df_test[&#39;pred_test&#39;], squared=False),4)
 
-<span class="c1"># Save model results</span>
-<span class="n">new_results</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span> <span class="s2">&quot;rmse_train&quot;</span><span class="p">:</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="s2">&quot;rmse_test&quot;</span><span class="p">:</span> <span class="n">rmse_test</span><span class="p">}</span>
-<span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_results</span><span class="p">)</span>  
+# Save model results
+new_results = {&quot;model&quot;: model_name, &quot;rmse_train&quot;: rmse_train, &quot;rmse_test&quot;: rmse_test}
+results.append(new_results)  
 
-<span class="n">results</span>
+results
 </pre></div>
 </div>
 </div>
@@ -1329,7 +1329,8 @@ age_s5       -53.3174     12.324     -4.326      0.000     -77.472     -29.163
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">plot_partial</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cpr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_se</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+reg.plot_partial(0, cpr=True, plot_se=False)
 </pre></div>
 </div>
 </div>
@@ -1347,9 +1348,9 @@ age_s5       -53.3174     12.324     -4.326      0.000     -77.472     -29.163
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">patsy</span> <span class="kn">import</span> <span class="n">dmatrix</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from patsy import dmatrix
 
-<span class="n">bs</span> <span class="o">=</span> <span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;cr(train, df = 3)&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">X_train</span><span class="p">},</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
+bs = dmatrix(&quot;cr(train, df = 3)&quot;, {&quot;train&quot;: X_train}, return_type=&#39;dataframe&#39;)
 </pre></div>
 </div>
 </div>
@@ -1359,28 +1360,28 @@ age_s5       -53.3174     12.324     -4.326      0.000     -77.472     -29.163
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">GLM</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">bs</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reg = sm.GLM(y_train, bs).fit()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;Natural Spline&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_name = &#39;Natural Spline&#39;
 
-<span class="c1"># Training data</span>
-<span class="n">pred_train</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;cr(train, df=3)&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">X_train</span><span class="p">},</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">))</span>
-<span class="n">rmse_train</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">pred_train</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+# Training data
+pred_train = reg.predict(dmatrix(&quot;cr(train, df=3)&quot;, {&quot;train&quot;: X_train}, return_type=&#39;dataframe&#39;))
+rmse_train = round(mean_squared_error(y_train, pred_train, squared=False),4)
 
-<span class="c1"># Test data</span>
-<span class="n">pred_test</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;cr(test, df=3)&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">X_test</span><span class="p">},</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">))</span>
-<span class="n">rmse_test</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_test</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span>
+# Test data
+pred_test = reg.predict(dmatrix(&quot;cr(test, df=3)&quot;, {&quot;test&quot;: X_test}, return_type=&#39;dataframe&#39;))
+rmse_test = round(mean_squared_error(y_test, pred_test, squared=False),4)
 
-<span class="c1"># Save model results</span>
-<span class="n">new_results</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span> <span class="s2">&quot;rmse_train&quot;</span><span class="p">:</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="s2">&quot;rmse_test&quot;</span><span class="p">:</span> <span class="n">rmse_test</span><span class="p">}</span>
-<span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_results</span><span class="p">)</span>  
+# Save model results
+new_results = {&quot;model&quot;: model_name, &quot;rmse_train&quot;: rmse_train, &quot;rmse_test&quot;: rmse_test}
+results.append(new_results)  
 
-<span class="n">results</span>
+results
 </pre></div>
 </div>
 </div>
@@ -1399,15 +1400,15 @@ age_s5       -53.3174     12.324     -4.326      0.000     -77.472     -29.163
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">X_test</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>xp = np.linspace(X_test.min(),X_test.max(), 100)
 
-<span class="c1"># Make predictions</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;cr(xp, df=3)&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;xp&quot;</span><span class="p">:</span> <span class="n">xp</span><span class="p">},</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">))</span>
+# Make predictions
+pred = reg.predict(dmatrix(&quot;cr(xp, df=3)&quot;, {&quot;xp&quot;: xp}, return_type=&#39;dataframe&#39;))
 
-<span class="c1"># plot</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Natural spline with df=3&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+# plot
+sns.scatterplot(x=X_train[&#39;age&#39;], y=y_train[&#39;wage&#39;])
+plt.plot(xp, pred, color=&#39;orange&#39;, label=&#39;Natural spline with df=3&#39;)
+plt.legend();
 </pre></div>
 </div>
 </div>
@@ -1424,9 +1425,9 @@ age_s5       -53.3174     12.324     -4.326      0.000     -77.472     -29.163
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_results = pd.DataFrame(results) 
 
-<span class="n">df_results</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rmse_test&#39;</span><span class="p">])</span>
+df_results.sort_values(by=[&#39;rmse_test&#39;])
 </pre></div>
 </div>
 </div>

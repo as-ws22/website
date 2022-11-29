@@ -612,15 +612,15 @@ title="Print to PDF"
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 
-<span class="kn">from</span> <span class="nn">statsmodels.gam.api</span> <span class="kn">import</span> <span class="n">BSplines</span>
-<span class="kn">from</span> <span class="nn">statsmodels.gam.api</span> <span class="kn">import</span> <span class="n">GLMGam</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tools.eval_measures</span> <span class="kn">import</span> <span class="n">mse</span><span class="p">,</span> <span class="n">rmse</span>
+from statsmodels.gam.api import BSplines
+from statsmodels.gam.api import GLMGam
+from statsmodels.tools.eval_measures import mse, rmse
 
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+%matplotlib inline
+import matplotlib.pyplot as plt
+import seaborn as sns
 </pre></div>
 </div>
 </div>
@@ -639,14 +639,14 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hitters_data</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from hitters_data import *
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_train
 </pre></div>
 </div>
 </div>
@@ -971,15 +971,15 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose features</span>
-<span class="n">x_spline</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[[</span><span class="s1">&#39;CRuns&#39;</span><span class="p">,</span> <span class="s1">&#39;Hits&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># choose features
+x_spline = df_train[[&#39;CRuns&#39;, &#39;Hits&#39;]]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CRuns&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.scatterplot(x=&#39;CRuns&#39;, y=&#39;Salary&#39;, data=df_train);
 </pre></div>
 </div>
 </div>
@@ -989,7 +989,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Hits&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.scatterplot(x=&#39;Hits&#39;, y=&#39;Salary&#39;, data=df_train);
 </pre></div>
 </div>
 </div>
@@ -1040,26 +1040,26 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create basis spline</span>
-<span class="n">bs</span> <span class="o">=</span> <span class="n">BSplines</span><span class="p">(</span><span class="n">x_spline</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">degree</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create basis spline
+bs = BSplines(x_spline, df=[7, 7], degree=[3, 3])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fit model</span>
-<span class="n">reg</span> <span class="o">=</span> <span class="n">GLMGam</span><span class="o">.</span><span class="n">from_formula</span><span class="p">(</span><span class="s1">&#39;Salary ~ CRuns + Hits&#39;</span><span class="p">,</span> 
-                                <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span> 
-                                <span class="n">smoother</span><span class="o">=</span><span class="n">bs</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># fit model
+reg = GLMGam.from_formula(&#39;Salary ~ CRuns + Hits&#39;, 
+                                data=df_train, 
+                                smoother=bs).fit()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># print results
+print(reg.summary())
 </pre></div>
 </div>
 </div>
@@ -1108,7 +1108,7 @@ Hits_s5       68.8706    231.932      0.297      0.767    -385.708     523.450
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">plot_partial</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cpr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_se</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reg.plot_partial(0, cpr=True, plot_se=False)
 </pre></div>
 </div>
 </div>
@@ -1122,7 +1122,7 @@ Hits_s5       68.8706    231.932      0.297      0.767    -385.708     523.450
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">plot_partial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cpr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_se</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reg.plot_partial(1, cpr=True, plot_se=False)
 </pre></div>
 </div>
 </div>
@@ -1138,22 +1138,22 @@ Hits_s5       68.8706    231.932      0.297      0.767    -385.708     523.450
 <h3>Training data<a class="headerlink" href="#training-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training data</span>
-<span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;pred_train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
-<span class="n">rmse_train</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">rmse</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">],</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;pred_train&#39;</span><span class="p">]),</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Training data
+df_train[&#39;pred_train&#39;] = reg.predict()
+rmse_train = round(rmse(df_train[&#39;Salary&#39;], df_train[&#39;pred_train&#39;]),4)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot training data</span>
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CRuns&#39;</span><span class="p">,</span> <span class="s1">&#39;Hits&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot training data
+features = [&#39;CRuns&#39;, &#39;Hits&#39;]
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_train</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+for i in features:
+    g = sns.scatterplot(x=i, y=&#39;Salary&#39;, data=df_train)
+    plt.title(i)
+    plt.show();
 </pre></div>
 </div>
 </div>
@@ -1170,32 +1170,32 @@ Hits_s5       68.8706    231.932      0.297      0.767    -385.708     523.450
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtain limits of training data features</span>
-<span class="n">x0_min</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;CRuns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="n">x0_max</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;CRuns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Obtain limits of training data features
+x0_min = X_train[&#39;CRuns&#39;].min()
+x0_max = X_train[&#39;CRuns&#39;].max()
 
-<span class="n">x1_min</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;Hits&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="n">x1_max</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;Hits&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+x1_min = X_train[&#39;Hits&#39;].min()
+x1_max = X_train[&#39;Hits&#39;].max()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only keep test data within training data limits</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[(</span><span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;CRuns&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x0_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;CRuns&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x0_max</span><span class="p">)]</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[(</span><span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;Hits&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x1_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;Hits&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x1_max</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Only keep test data within training data limits
+df_test = df_test[(df_test[&quot;CRuns&quot;] &gt; x0_min) &amp; (df_test[&quot;CRuns&quot;] &lt; x0_max)]
+df_test = df_test[(df_test[&quot;Hits&quot;] &gt; x1_min) &amp; (df_test[&quot;Hits&quot;] &lt; x1_max)]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot test data</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_test</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot test data
+for i in features:
+    g = sns.scatterplot(x=i, y=&#39;Salary&#39;, data=df_test)
+    plt.title(i)
+    plt.show();
 </pre></div>
 </div>
 </div>
@@ -1206,19 +1206,19 @@ Hits_s5       68.8706    231.932      0.297      0.767    -385.708     523.450
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtain test RMSE</span>
-<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;pred_test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_test</span><span class="p">,</span> <span class="n">exog_smooth</span><span class="o">=</span> <span class="n">df_test</span><span class="p">[[</span><span class="s1">&#39;CRuns&#39;</span><span class="p">,</span> <span class="s1">&#39;Hits&#39;</span><span class="p">]])</span>
-<span class="n">rmse_test</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">rmse</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">],</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;pred_test&#39;</span><span class="p">]),</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Obtain test RMSE
+df_test[&#39;pred_test&#39;] = reg.predict(df_test, exog_smooth= df_test[[&#39;CRuns&#39;, &#39;Hits&#39;]])
+rmse_test = round(rmse(df_test[&#39;Salary&#39;], df_test[&#39;pred_test&#39;]),4)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save model results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;GAM&quot;</span><span class="p">,</span> <span class="s2">&quot;rmse_train&quot;</span><span class="p">:</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="s2">&quot;rmse_test&quot;</span><span class="p">:</span> <span class="n">rmse_test</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Save model results
+results = {&quot;model&quot;: &quot;GAM&quot;, &quot;rmse_train&quot;: rmse_train, &quot;rmse_test&quot;: rmse_test}
 
-<span class="n">results</span>
+results
 </pre></div>
 </div>
 </div>

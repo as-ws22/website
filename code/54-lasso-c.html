@@ -659,23 +659,23 @@ title="Print to PDF"
 <h3>Import<a class="headerlink" href="#import" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/kirenz/datasets/master/Hitters.csv&quot;</span><span class="p">)</span>
+df = pd.read_csv(&quot;https://raw.githubusercontent.com/kirenz/datasets/master/Hitters.csv&quot;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.info()
 </pre></div>
 </div>
 </div>
@@ -686,7 +686,7 @@ title="Print to PDF"
 <p>Note that the salary is missing for some of the players:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(df.isnull().sum())
 </pre></div>
 </div>
 </div>
@@ -694,8 +694,8 @@ title="Print to PDF"
 <p>We simply drop the missing cases:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop missing cases</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># drop missing cases
+df = df.dropna()
 </pre></div>
 </div>
 </div>
@@ -706,21 +706,21 @@ title="Print to PDF"
 <p>Since we will use the lasso algorithm from scikit learn, we need to encode our categorical features as one-hot numeric features (dummy variables):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;League&#39;</span><span class="p">,</span> <span class="s1">&#39;Division&#39;</span><span class="p">,</span><span class="s1">&#39;NewLeague&#39;</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dummies = pd.get_dummies(df[[&#39;League&#39;, &#39;Division&#39;,&#39;NewLeague&#39;]])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummies</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dummies.info()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dummies</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(dummies.head())
 </pre></div>
 </div>
 </div>
@@ -728,7 +728,7 @@ title="Print to PDF"
 <p>Next, we create our label y:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y = df[&#39;Salary&#39;]
 </pre></div>
 </div>
 </div>
@@ -736,7 +736,7 @@ title="Print to PDF"
 <p>We drop the column with the outcome variable (Salary), and categorical columns for which we already created dummy variables:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_numerical</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="s1">&#39;League&#39;</span><span class="p">,</span> <span class="s1">&#39;Division&#39;</span><span class="p">,</span> <span class="s1">&#39;NewLeague&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_numerical = df.drop([&#39;Salary&#39;, &#39;League&#39;, &#39;Division&#39;, &#39;NewLeague&#39;], axis=1).astype(&#39;float64&#39;)
 </pre></div>
 </div>
 </div>
@@ -744,17 +744,17 @@ title="Print to PDF"
 <p>Make a list of all numerical features (we need them later):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_numerical</span> <span class="o">=</span> <span class="n">X_numerical</span><span class="o">.</span><span class="n">columns</span>
-<span class="n">list_numerical</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list_numerical = X_numerical.columns
+list_numerical
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create all features</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_numerical</span><span class="p">,</span> <span class="n">dummies</span><span class="p">[[</span><span class="s1">&#39;League_N&#39;</span><span class="p">,</span> <span class="s1">&#39;Division_W&#39;</span><span class="p">,</span> <span class="s1">&#39;NewLeague_N&#39;</span><span class="p">]]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">X</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create all features
+X = pd.concat([X_numerical, dummies[[&#39;League_N&#39;, &#39;Division_W&#39;, &#39;NewLeague_N&#39;]]], axis=1)
+X.info()
 </pre></div>
 </div>
 </div>
@@ -765,16 +765,16 @@ title="Print to PDF"
 <p>Split the data set into train and test set with the first 70% of the data for training and the remaining 30% for testing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import train_test_split
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=10)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train.head()
 </pre></div>
 </div>
 </div>
@@ -805,19 +805,19 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import StandardScaler
 
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">___</span><span class="p">[</span><span class="n">list_numerical</span><span class="p">])</span> 
+scaler = StandardScaler().fit(___[list_numerical]) 
 
-<span class="n">X_train</span><span class="p">[</span><span class="n">list_numerical</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">___</span><span class="p">[</span><span class="n">list_numerical</span><span class="p">])</span>
-<span class="n">X_test</span><span class="p">[</span><span class="n">list_numerical</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">___</span><span class="p">[</span><span class="n">list_numerical</span><span class="p">])</span>
+X_train[list_numerical] = scaler.transform(___[list_numerical])
+X_test[list_numerical] = scaler.transform(___[list_numerical])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train
 </pre></div>
 </div>
 </div>
@@ -829,10 +829,10 @@ title="Print to PDF"
 <p>First, we apply lasso regression on the training set with an arbitrarily regularization parameter <span class="math notranslate nohighlight">\(\alpha\)</span> of 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.linear_model import Lasso
 
-<span class="n">reg</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">___</span><span class="p">)</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+reg = Lasso(alpha=___)
+reg.___(X_train, y_train)
 </pre></div>
 </div>
 </div>
@@ -842,8 +842,8 @@ title="Print to PDF"
 <p>We print the <span class="math notranslate nohighlight">\(R^2\)</span>-score for the training and test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R squared training set&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R squared test set&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;R squared training set&#39;, round(reg.___(X_train, y_train)*100, 2))
+print(&#39;R squared test set&#39;, round(reg.___(X_test, y_test)*100, 2))
 </pre></div>
 </div>
 </div>
@@ -851,27 +851,27 @@ title="Print to PDF"
 <p>MSE for the training and test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import mean_squared_error
 
-<span class="c1"># Training data</span>
-<span class="n">pred_train</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+# Training data
+pred_train = reg.___(X_train)
 
-<span class="n">mse_train</span> <span class="o">=</span> <span class="n">___</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">pred_train</span><span class="p">)</span>
+mse_train = ___(y_train, pred_train)
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MSE training set&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">mse_train</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+print(&#39;MSE training set&#39;, round(mse_train, 2))
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Test data
 
-<span class="n">pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+pred = reg.___(X_test)
 
-<span class="n">mse_test</span> <span class="o">=</span><span class="n">___</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+mse_test =___(y_test, pred)
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MSE test set&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">mse_test</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+print(&#39;MSE test set&#39;, round(mse_test, 2))
 </pre></div>
 </div>
 </div>
@@ -883,34 +883,34 @@ title="Print to PDF"
 <p>To better understand the role of alpha, we plot the lasso coefficients as a function of alpha (<code class="docutils literal notranslate"><span class="pre">max_iter</span></code> are the maximum number of iterations):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
 
-<span class="c1"># numpy.linspace(start, stop, num of samples)</span>
-<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+# numpy.linspace(start, stop, num of samples)
+alphas = np.linspace(0.01,500,100)
 
-<span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+lasso = Lasso(max_iter=10000)
 
-<span class="n">coefs</span> <span class="o">=</span> <span class="p">[]</span>
+coefs = []
 
-<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">:</span>
-    <span class="n">lasso</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
-    <span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-    <span class="n">coefs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+for a in alphas:
+    lasso.set_params(alpha=a)
+    lasso.fit(X_train, y_train)
+    coefs.append(lasso.coef_)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ax = plt.gca()
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">coefs</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;alpha&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Standardized Coefficients&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lasso coefficients as a function of alpha&#39;</span><span class="p">);</span>
+ax.plot(alphas, coefs)
+ax.set_xscale(&#39;log&#39;)
+plt.axis(&#39;tight&#39;)
+plt.xlabel(&#39;alpha&#39;)
+plt.ylabel(&#39;Standardized Coefficients&#39;)
+plt.title(&#39;Lasso coefficients as a function of alpha&#39;);
 </pre></div>
 </div>
 </div>
@@ -931,13 +931,13 @@ title="Print to PDF"
 <h3>k-fold cross validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoCV</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.linear_model import LassoCV
 
-<span class="c1"># Lasso with 5 fold cross-validation</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">___</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="n">__</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+# Lasso with 5 fold cross-validation
+model = ___(cv=__, random_state=0, max_iter=10000)
 
-<span class="c1"># Fit model</span>
-<span class="n">model</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+# Fit model
+model.___(X_train, y_train)
 </pre></div>
 </div>
 </div>
@@ -945,7 +945,7 @@ title="Print to PDF"
 <p>Show best value of penalization chosen by cross validation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">alpha_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model.alpha_
 </pre></div>
 </div>
 </div>
@@ -956,10 +956,10 @@ title="Print to PDF"
 <p>Use best value for our final model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set best alpha</span>
-<span class="n">lasso_best</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">___</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Set best alpha
+lasso_best = Lasso(alpha=___)
 
-<span class="n">lasso_best</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+lasso_best.fit(X_train, y_train)
 </pre></div>
 </div>
 </div>
@@ -967,7 +967,7 @@ title="Print to PDF"
 <p>Show model coefficients and names:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">lasso_best</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">X</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(list(zip(lasso_best.coef_, X)))
 </pre></div>
 </div>
 </div>
@@ -977,17 +977,17 @@ title="Print to PDF"
 <h3>Model evaluation<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Show score
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R squared training set&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">lasso_best</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R squared test set&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">lasso_best</span><span class="o">.</span><span class="n">___</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+print(&#39;R squared training set&#39;, round(lasso_best.___(X_train, y_train)*100, 2))
+print(&#39;R squared test set&#39;, round(lasso_best.___(X_test, y_test)*100, 2))
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">lasso_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mean_squared_error(y_test, lasso_best.predict(X_test))
 </pre></div>
 </div>
 </div>
@@ -995,27 +995,27 @@ title="Print to PDF"
 <p>Lasso path: plot results of cross-validation with mean squared erros (for more information about the plot visit the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_model_selection.html#sphx-glr-auto-examples-linear-model-plot-lasso-model-selection-py">scikit-learn documentation</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">alphas_</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">mse_path_</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.semilogx(model.alphas_, model.mse_path_, &quot;:&quot;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">alphas_</span> <span class="p">,</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">mse_path_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
-    <span class="s2">&quot;k&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Average across the folds&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">alpha_</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha: CV estimate&quot;</span>
-<span class="p">)</span>
+plt.plot(
+    model.alphas_ ,
+    model.mse_path_.mean(axis=-1),
+    &quot;k&quot;,
+    label=&quot;Average across the folds&quot;,
+    linewidth=2,
+)
+plt.axvline(
+    model.alpha_, linestyle=&quot;--&quot;, color=&quot;k&quot;, label=&quot;alpha: CV estimate&quot;
+)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;alphas&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean square error&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mean square error on each fold&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+plt.legend()
+plt.xlabel(&quot;alphas&quot;)
+plt.ylabel(&quot;Mean square error&quot;)
+plt.title(&quot;Mean square error on each fold&quot;)
+plt.axis(&quot;tight&quot;)
 
-<span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">250000</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">);</span>
+ymin, ymax = 50000, 250000
+plt.ylim(ymin, ymax);
 </pre></div>
 </div>
 </div>
