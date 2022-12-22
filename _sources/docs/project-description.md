@@ -2,6 +2,8 @@
 
 ## Timeline
 
+*Note: some of the tasks (like the video-presentation) were canceled*
+
 
 | Topic                 | Deadline      | GitHub folder & hints |
 | ---                   | ---           |  ---                  |
@@ -10,9 +12,7 @@
 |[](draft-analysis)     | We, Dec 28    | Notebooks/            |
 |[](peer-review-draft)  | We, Jan 11    | use [](issue-template)|
 |[](report)             | Mo, Jan 16    | reports/              |
-|[](slides-video)       | Mo, Jan 16   | reports/              |
 |[](github-repo)        | Mo, Jan 16   | "Repo in final state" |
-|[](comments)           | We, Jan 18   | "Comment in Moodle"   |
 |[](presentation)       | Thur, Jan 19  | "Final presentation"  |
 
 
@@ -380,6 +380,8 @@ If there is an appendix, it is reasonably organized and easy for the reader to f
 All code, warnings, and messages are suppressed.
 The main body of the written report (not including the appendix) is no longer than 10 pages.
 
+
+<!--
 (slides-video)=
 ## Slides & video presentation
 
@@ -421,6 +423,7 @@ Below are a few resources on recording videos:
 
 Once your video is ready, upload the video to Moodle.
 
+-->
 
 (github-repo)=
 ## GitHub repo
@@ -435,6 +438,8 @@ You will find an overview of the GitHub structure in the README.md file of the G
 
 Points for reproducibility + organization will be based on the reproducibility of the report and the organization of the project GitHub repo. The repo should be neatly organized, there should be no extraneous files, all text in the README should be easily readable.
 
+
+<!--
 (comments)=
 ## Presentation comments 
 
@@ -450,7 +455,9 @@ Additionally, the question should be
 - relevant to that group's specific presentation, i.e demonstrating that you've watched the presentation.
 
 *This portion of the project will be assessed individually.*
+-->
 
+<!--
 (team-eval)=
 ## Teamwork evaluation
 
@@ -463,7 +470,7 @@ If any individual gets an average peer score indicating that this was the case, 
 If you have concerns with the teamwork and/or contribution from any team members, please email me by the project video deadline.
 **You only need to email me if you have concerns**.
 Otherwise, I will assume everyone on the team equally contributed and will receive full credit for the teamwork portion of the grade.
-
+-->
 
 (presentation)=
 ## Final presentation
@@ -483,12 +490,9 @@ The grade breakdown is as follows:
 | **Topic ideas**                    | 5 pts   |
 | **Project proposal**               | 10 pts  |
 | **Peer review**                    | 10 pts  |
-| **Report**                         | 35 pts  |
-| **Slides + video presentation**    | 15 pts  |
-| **Reproducibility + orga (GitHub)**| 5 pts   |
-| **Video comments**                 | 5 pts   |
-| **Peer teamwork evaluation**       | 5 pts   |
-| **Final presentation**             | 10 pts   |
+| **Report**                         | 40 pts  |
+| **Reproducibility + orga (GitHub)**| 10 pts   |
+| **Final presentation**             | 25 pts   |
 
 
 *Note: No late project reports or videos are accepted.*
