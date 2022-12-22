@@ -62,7 +62,8 @@ Code 28. to 31. are application exercises
 
 
 - [53. Model selection: Implicit (Lasso)](../code/53-implicit.ipynb)
-- [54. Lasso regression](../code/54-lasso-c.ipynb)
+- [54. Lasso regression exercise](../code/54-lasso-c.ipynb)
+- [54. Lasso regression solution](../code/54-lasso.ipynb)
 - [55. Model selection: Filter](../code/55-filter.ipynb)
 - [56. Model selection: Wrapper](../code/56-wrapper.ipynb)
 
