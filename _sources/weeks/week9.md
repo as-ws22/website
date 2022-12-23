@@ -26,6 +26,8 @@ Usage of scikit-learn pipelines and other advanced methods which we wont cover i
 
 Create reproducible documents that can be regenerated when underlying assumptions or data change:
 
+- [Quarto reporting and presentation examples](https://github.com/kirenz/reporting-quarto)
+
 - [Quarto website (Nr. 94)](https://quarto.org/)
 
 
